@@ -1,0 +1,15 @@
+{
+  "title": "Special Benefits",
+  "cards": [
+    {
+      "icon": "/images/emi-icon.png",
+      "title": "0% EMI",
+      "description": "No Cost EMI on Fertility Package"
+    },
+    {
+      "icon": "/images/corporate-icon.png",
+      "title": "Corporate Benefits",
+      "description": "Exclusive offers & discounts for corporates"
+    }
+  ]
+}

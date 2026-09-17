@@ -1,0 +1,30 @@
+{
+  "sectionTitle": "Why Choose",
+  "sectionHighlight": "Motherhood Fertility & IVF",
+  "stats": [
+    {
+      "icon": "/images/success-stories-icon.png",
+      "number": "10K+",
+      "label": "Success Stories",
+      "dotColor": "blue"
+    },
+    {
+      "icon": "/images/doctors-icon.png",
+      "number": "1400+",
+      "label": "Doctors",
+      "dotColor": "pink"
+    },
+    {
+      "icon": "/images/ivf-centers-icon.png",
+      "number": "19",
+      "label": "IVF Centers",
+      "dotColor": "blue"
+    },
+    {
+      "icon": "/images/cities-icon.png",
+      "number": "12",
+      "label": "Cities",
+      "dotColor": null
+    }
+  ]
+}

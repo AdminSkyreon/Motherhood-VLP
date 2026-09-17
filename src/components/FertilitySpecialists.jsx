@@ -1,0 +1,155 @@
+'use client';
+import React, { useEffect, useState } from 'react';
+import data from '@/data/doctorSpecialistsData.json';
+import { GraduationCap, Stethoscope, MapPin, Calendar } from 'lucide-react';
+
+export default function FertilitySpecialists() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <section className="w-full pt-0 pb-6 my-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-sky-50/50 backdrop-blur-md border-b border-blue-100/60 shadow-sm relative">
+      <div className="max-w-4xl mx-auto px-4 pt-1 flex flex-col items-center">
+        
+        {/* Section Title - Maximum proximity to the top section */}
+        <h2 className={`text-[24px] md:text-3xl lg:text-4xl font-bold text-[#111111] text-center mb-2 md:mb-3 max-w-[340px] md:max-w-none leading-tight transition-all duration-700 transform ${
+          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+        }`}>
+          Meet Our Fertility & IVF <span className="block md:inline">Specialists</span>
+        </h2>
+
+        {/* Doctor Cards Container: Flex-nowrap with horizontal scroll on mobile, flex-wrap on desktop */}
+        <div className={`w-full flex md:flex-wrap flex-nowrap overflow-x-auto md:overflow-visible justify-start md:justify-center items-start gap-4 pb-4 md:pb-0 px-2 scrollbar-thin transition-all duration-1000 transform ${
+          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          {data.doctors.map((doc, index) => {
+            const isActive = activeCard === index;
+
+            return (
+              <div 
+                key={index}
+                onTouchStart={() => setActiveCard(index)}
+                onTouchEnd={() => setActiveCard(null)}
+                onClick={() => setActiveCard(index)}
+                className={`bg-white rounded-[24px] p-4 md:p-5 border border-gray-100 shadow-[0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(219,80,112,0.12)] transition-all duration-300 flex flex-col items-center text-center relative group hover:-translate-y-1 w-[280px] md:w-[320px] shrink-0 cursor-pointer select-none ${
+                  isActive ? 'translate-y-1.5 shadow-[0_12px_30px_rgba(219,80,112,0.12)]' : ''
+                }`}
+              >
+                {/* Doctor Image Container with Top Ring Icon */}
+                <div className="relative mb-3 mt-1 transition-transform duration-500 group-hover:scale-105">
+                  
+                  {/* Top Corner Ring/Heart Icon */}
+                  <div className="absolute -top-1.5 right-4 z-20 w-6 h-6 bg-white rounded-full p-0.5 shadow-sm border border-pink-100 flex items-center justify-center">
+                    <img 
+                      src={doc.ringIcon} 
+                      alt="ring icon" 
+                      className="w-full h-full object-contain" 
+                    />
+                  </div>
+
+                  {/* Circular Image Frame */}
+                  <div className={`w-28 h-28 md:w-32 md:h-32 rounded-full p-1 border-2 ${
+                    doc.theme === 'pink' ? 'border-pink-300' : 'border-blue-300'
+                  } flex items-center justify-center bg-gray-50 relative overflow-visible`}>
+                    <img 
+                      src={doc.image} 
+                      alt={doc.name} 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                </div>
+
+                {/* Doctor Name */}
+                <h3 className="text-base md:text-lg font-bold text-[#231F20] mb-1">
+                  {doc.name}
+                </h3>
+
+                {/* Specialty Badge */}
+                <div className={`inline-block px-3 py-0.5 rounded-full text-[11px] font-semibold mb-3.5 ${
+                  doc.theme === 'pink' 
+                    ? 'bg-pink-50 text-[#DB5070] border border-pink-100' 
+                    : 'bg-blue-50 text-blue-700 border border-blue-100'
+                }`}>
+                  {doc.specialty}
+                </div>
+
+                {/* Details List (Qualification, Experience, Location) */}
+                <div className="w-full space-y-2 mb-4 text-left max-w-[280px]">
+                  
+                  {/* Qualification */}
+                  <div className="flex items-start gap-2 text-xs text-gray-600">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                      doc.theme === 'pink' ? 'bg-pink-50 text-[#DB5070]' : 'bg-blue-50 text-blue-600'
+                    }`}>
+                      <GraduationCap className="w-3 h-3" />
+                    </div>
+                    <span className={`font-medium text-gray-700 transition-all duration-300 leading-snug ${
+                      isActive ? 'line-clamp-none' : 'line-clamp-1 group-hover:line-clamp-none'
+                    }`}>
+                      {doc.qualification}
+                    </span>
+                  </div>
+
+                  {/* Experience */}
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                      doc.theme === 'pink' ? 'bg-pink-50 text-[#DB5070]' : 'bg-blue-50 text-blue-600'
+                    }`}>
+                      <Stethoscope className="w-3 h-3" />
+                    </div>
+                    <span className="font-medium text-gray-700 leading-snug">
+                      {doc.experience}
+                    </span>
+                  </div>
+
+                  {/* Location */}
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                      doc.theme === 'pink' ? 'bg-pink-50 text-[#DB5070]' : 'bg-blue-50 text-blue-600'
+                    }`}>
+                      <MapPin className="w-3 h-3" />
+                    </div>
+                    <span className="font-medium text-gray-700 leading-snug">
+                      {doc.location}
+                    </span>
+                  </div>
+
+                </div>
+
+                {/* Book Appointment Button */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add your booking logic here
+                  }}
+                  className="w-full max-w-[280px] py-2 px-4 rounded-full bg-[#DB5070] hover:bg-[#c44463] text-white font-medium text-xs shadow-[0_4px_10px_rgba(219,80,112,0.3)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-1.5"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  Book Appointment
+                </button>
+
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+
+      {/* Vertical Fixed Sticky 'Book Now' Button on Right Side (Visible on both mobile & desktop) */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
+        <button 
+          onClick={() => {
+            // Yahan apna booking modal ya action likhein
+          }}
+          className="bg-[#DB5070] hover:bg-[#c44463] text-white font-semibold py-3 px-2 rounded-l-xl shadow-[0_4px_20px_rgba(219,80,112,0.4)] [writing-mode:vertical-rl] tracking-widest text-xs uppercase transition-all duration-300"
+        >
+          Book Now
+        </button>
+      </div>
+    </section>
+  );
+}

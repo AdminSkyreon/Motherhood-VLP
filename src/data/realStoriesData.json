@@ -1,0 +1,56 @@
+{
+  "sectionTitle": "Real Stories. Real Joy. Real Families.",
+  "testimonialImage": "/images/mother-baby.png",
+  "ratings": {
+    "google": {
+      "rating": "4.8",
+      "reviewsCount": "1956 reviews"
+    },
+    "practo": {
+      "rating": "4.9",
+      "reviewsCount": "1248 reviews"
+    }
+  },
+  "testimonials": [
+    {
+      "id": 1,
+      "comment": "“ಎಲ್ಲಾ ಸಿಬ್ಬಂದಿಗಳು ತುಂಬಾ ಚೆನ್ನಾಗಿ ಸ್ಪಂದಿಸುತ್ತಾರೆ. ಇದು ನಮ್ಮ ಲಕ್ಕಿ ಆಸ್ಪತ್ರೆ ಅನ್ನಿಸುತ್ತದೆ. ಇಲ್ಲಿನ ಡಾಕ್ಟರ್ಸ್ ಮತ್ತು ಸ್ಟಾಫ್ ತುಂಬಾ ಕೇರ್ ಮಾಡ್ತಾರೆ, ತುಂಬಾ ಧನ್ಯವಾದಗಳು.”",
+      "author": "Rudresha KS Ksr"
+    },
+    {
+      "id": 2,
+      "comment": "“Had a great experience at Motherhood Fertility & IVF Center. The doctors are very supportive and explain everything clearly throughout the treatment journey. We are extremely grateful.”",
+      "author": "Arvindn Hrs"
+    },
+    {
+      "id": 3,
+      "comment": "“Thank you so much doctors. I got a female baby after 9 years. My dream came true. The medical care and emotional support provided here gave us the strength to keep going.”",
+      "author": "Ganesan Padmatvathi"
+    },
+    {
+      "id": 4,
+      "comment": "“I am very happy today. Today I heard the happy news. I can't express my happiness in words. Special thanks to all the doctors and nursing staff who made this wonderful journey successful.”",
+      "author": "Surya Devraj"
+    },
+    {
+      "id": 5,
+      "comment": "“I visited this hospital and I felt this hospital is the best fertility centre. All the facilities are top class, and the environment is very positive and hygienic. Highly recommended.”",
+      "author": "Mr. Saju Laskar"
+    },
+    {
+      "id": 6,
+      "comment": "“Excellent experience at Motherhood Clinic. The IVF process was smooth, doctors were experienced, and every single query of ours was handled with utmost patience.”",
+      "author": "Amit Kumar"
+    },
+    {
+      "id": 7,
+      "comment": "“I feel very happy choosing Motherhood Hospital for my fertility treatment. They took good care of us like a family member, ensuring transparency and comfort at every single step.”",
+      "author": "Shabuddeen S"
+    },
+    {
+      "id": 8,
+      "comment": "“The consultation was thorough, and every step of the diagnosis and treatment was explained patiently. We never felt rushed during our appointments, and results exceeded expectations.”",
+      "author": "Jayasree Hemanth"
+    }
+  ]
+}

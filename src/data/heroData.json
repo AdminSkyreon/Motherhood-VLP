@@ -1,0 +1,31 @@
+{
+  "header": {
+    "logoImg": "/motherhood-fertility-logo.png",
+    "logoAlt": "Motherhood Fertility & IVF",
+    "phoneNumber": "080 6901 9060"
+  },
+  "heroForm": {
+    "titlePart1": "Trusted Experts in Fertility &",
+    "titlePart2": "IVF Treatment",
+    "fields": {
+      "fullName": "Full Name",
+      "language": "Preferred Language",
+      "languagesList": [
+        "English",
+        "Hindi",
+        "Kannada",
+        "Malayalam",
+        "Marathi",
+        "Tamil",
+        "Telugu",
+        "Bengali",
+        "Punjabi",
+        "Gujarati"
+      ],
+      "phone": "Phone Number"
+    },
+    "consentText": "I consent to get contacted by Motherhood IVF representatives",
+    "buttonText": "Get a Call Back",
+    "successMessage": "Thank you — our team will call you back shortly."
+  }
+}

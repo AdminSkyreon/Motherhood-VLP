@@ -1,0 +1,42 @@
+{
+  "sectionTitleLine1": "IVF is recommended for",
+  "sectionTitleLine2": "couples facing",
+  "items": [
+    {
+      "icon": "/images/blocked-tubes.png",
+      "activeIcon": "/images/blocked-tubes-white.png",
+      "title": "Blocked or Damaged",
+      "subtitle": "Fallopian Tubes"
+    },
+    {
+      "icon": "/images/low-sperm.png",
+      "activeIcon": "/images/low-sperm-white.png",
+      "title": "Low Sperm Count",
+      "subtitle": "or Motility"
+    },
+    {
+      "icon": "/images/pcos.png",
+      "activeIcon": "/images/pcos-white.png",
+      "title": "PCOS or",
+      "subtitle": "Endometriosis"
+    },
+    {
+      "icon": "/images/unexplained.png",
+      "activeIcon": "/images/unexplained-white.png",
+      "title": "Unexplained",
+      "subtitle": "Infertility"
+    },
+    {
+      "icon": "/images/age-related.png",
+      "activeIcon": "/images/age-related-white.png",
+      "title": "Age-Related",
+      "subtitle": "Fertility Issues"
+    },
+    {
+      "icon": "/images/failed-iui.png",
+      "activeIcon": "/images/failed-iui-white.png",
+      "title": "Failed IUI or Previous",
+      "subtitle": "Fertility Treatments"
+    }
+  ]
+}

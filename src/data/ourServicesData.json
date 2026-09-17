@@ -1,0 +1,60 @@
+{
+  "sectionTitle": "Our Services",
+  "backgroundImage": "/images/doctor-bg.jpg", 
+  "services": [
+    {
+      "icon": "/images/ivf.png",
+      "title": "IVF",
+      "subtitle": "(In Vitro Fertilization)",
+      "description": "A fertility treatment where eggs and sperm are combined in a laboratory to help achieve pregnancy."
+    },
+    {
+      "icon": "/images/iui.png",
+      "title": "IUI",
+      "subtitle": "(Intrauterine Insemination)",
+      "description": "A procedure where specially washed sperm are placed directly into the uterus around the time of ovulation."
+    },
+    {
+      "icon": "/images/icsi.png",
+      "title": "ICSI",
+      "subtitle": "",
+      "description": "A specialized form of IVF where a single sperm is injected directly into a mature egg."
+    },
+    {
+      "icon": "/images/semen-freezing.png",
+      "title": "Semen / Egg Freezing",
+      "subtitle": "",
+      "description": "A safe method to freeze and store reproductive cells for future family planning."
+    },
+    {
+      "icon": "/images/embryo-freezing.png",
+      "title": "Embryo Freezing",
+      "subtitle": "",
+      "description": "A safe method to freeze and store embryos for future fertility treatments."
+    },
+    {
+      "icon": "/images/oocyte.png",
+      "title": "Oocyte Vitrification",
+      "subtitle": "",
+      "description": "A process to extract, freeze, and store a woman's eggs to preserve reproductive potential."
+    },
+    {
+      "icon": "/images/laser-hatching.png",
+      "title": "Laser Assisted Hatching",
+      "subtitle": "",
+      "description": "A technique using a precise laser to thin the embryo's outer shell, improving implantation chances."
+    },
+    {
+      "icon": "/images/surgery.png",
+      "title": "Reproductive Surgery",
+      "subtitle": "",
+      "description": "Minimally invasive surgical procedures to diagnose and treat female reproductive tract issues."
+    },
+    {
+      "icon": "/images/ovulation.png",
+      "title": "Ovulation Induction",
+      "subtitle": "",
+      "description": "Medical treatment to stimulate the ovaries to produce one or more mature eggs."
+    }
+  ]
+}

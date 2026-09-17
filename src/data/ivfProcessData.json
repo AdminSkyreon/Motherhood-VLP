@@ -1,0 +1,55 @@
+{
+  "sectionTitle": "IVF Treatment Process",
+  "sectionSubtitle": "A personalised journey with advanced care at every step",
+  "steps": [
+    {
+      "stepNumber": "01",
+      "icon": "/images/step-consultation.png",
+      "activeIcon": "/images/step-consultation-pink.png",
+      "title": "Fertility Consultation & Evaluation",
+      "description": "Understand your health and create a personalised treatment plan with our experts."
+    },
+    {
+      "stepNumber": "02",
+      "icon": "/images/step-ovarian.png",
+      "activeIcon": "/images/step-ovarian-pink.png",
+      "title": "Ovarian Stimulation",
+      "description": "Medications are given to stimulate the ovaries to produce multiple eggs."
+    },
+    {
+      "stepNumber": "03",
+      "icon": "/images/step-egg.png",
+      "activeIcon": "/images/step-egg-pink.png",
+      "title": "Egg Retrieval",
+      "description": "A minor surgical procedure to safely collect the mature eggs from your ovaries."
+    },
+    {
+      "stepNumber": "04",
+      "icon": "/images/step-fertilization.png",
+      "activeIcon": "/images/step-fertilization-pink.png",
+      "title": "Fertilization",
+      "description": "Eggs are fertilized with sperm in our advanced embryology lab."
+    },
+    {
+      "stepNumber": "05",
+      "icon": "/images/step-embryo.png",
+      "activeIcon": "/images/step-embryo-pink.png",
+      "title": "Embryo Growth & Selection",
+      "description": "Embryos are monitored closely for growth and the healthiest ones are selected."
+    },
+    {
+      "stepNumber": "06",
+      "icon": "/images/step-transfer.png",
+      "activeIcon": "/images/step-transfer-pink.png",
+      "title": "Embryo Transfer",
+      "description": "A painless procedure to place the selected embryo back into the uterus."
+    },
+    {
+      "stepNumber": "07",
+      "icon": "/images/step-pregnancy.png",
+      "activeIcon": "/images/step-pregnancy-pink.png",
+      "title": "Pregnancy Test",
+      "description": "A blood test is done after 10–14 days to confirm successful pregnancy."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Meet Our Fertility & IVF Specialists",
+  "doctors": [
+    {
+      "name": "Dr. Priyanka Reddy",
+      "specialty": "IVF Specialist",
+      "image": "/images/doctor1.png",
+      "ringIcon": "/images/ring-icon-pink.png",
+      "theme": "pink",
+      "qualification": "MBBS, MS – OBG, Fellowship in Reproductive Medicine, Fellowship & Diploma in Minimal Access Surgery",
+      "experience": "10+ Years of Experience",
+      "location": "HRBR Layout, Bengaluru"
+    },
+    {
+      "name": "Dr. Kusuma M Vijay",
+      "specialty": "Consultant - Reproductive Medicine",
+      "image": "/images/doctor2.png",
+      "ringIcon": "/images/ring-icon-blue.png",
+      "theme": "blue",
+      "qualification": "MBBS DGO, DNB - Obstetrics & Gynaecology, Fellowship in Reproductive Endocrinology & Advanced Laparoscopy",
+      "experience": "24+ Years of Experience",
+      "location": "HRBR Layout, Bengaluru"
+    }
+  ]
+}
