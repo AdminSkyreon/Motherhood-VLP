@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function SpecialBenefits({ data }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -46,7 +47,7 @@ export default function SpecialBenefits({ data }) {
                 : 'group-hover:shadow-[0_0_20px_rgba(230,120,150,0.35)]'
             }`}>
               <img 
-                src={card.icon} 
+                src={assetUrl(card.icon)} 
                 alt={card.title} 
                 className="w-7 h-7 md:w-6 md:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
               />

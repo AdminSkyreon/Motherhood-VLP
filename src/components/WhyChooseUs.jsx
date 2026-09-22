@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function WhyChooseUs({ data }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -83,7 +84,7 @@ export default function WhyChooseUs({ data }) {
                       : 'bg-blue-50/90 border-blue-100 group-hover:bg-blue-100/80'
                   }`}>
                     <img 
-                      src={item.icon} 
+                      src={assetUrl(item.icon)} 
                       alt={item.label} 
                       className={`w-7 h-7 object-contain transition-all duration-300 ${
                         isActive ? 'brightness-0 invert' : 'brightness-100'

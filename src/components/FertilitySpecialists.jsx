@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { GraduationCap, Stethoscope, MapPin, Calendar } from 'lucide-react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function FertilitySpecialists({ data }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,7 +50,7 @@ export default function FertilitySpecialists({ data }) {
                   {/* Top Corner Ring/Heart Icon */}
                   <div className="absolute -top-1.5 right-4 z-20 w-6 h-6 bg-white rounded-full p-0.5 shadow-sm border border-pink-100 flex items-center justify-center">
                     <img 
-                      src={doc.ringIcon} 
+                      src={assetUrl(doc.ringIcon)} 
                       alt="ring icon" 
                       className="w-full h-full object-contain" 
                     />
@@ -60,7 +61,7 @@ export default function FertilitySpecialists({ data }) {
                     doc.theme === 'pink' ? 'border-pink-300' : 'border-blue-300'
                   } flex items-center justify-center bg-gray-50 relative overflow-visible`}>
                     <img 
-                      src={doc.image} 
+                      src={assetUrl(doc.image)} 
                       alt={doc.name} 
                       className="w-full h-full object-cover rounded-full"
                     />

@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function IvfRecommended({ data }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,7 +75,7 @@ export default function IvfRecommended({ data }) {
                   isActive ? 'bg-transparent border-0' : 'bg-pink-50/80 border border-pink-100/60 shadow-inner'
                 }`}>
                   <img 
-                    src={isActive && item.activeIcon ? item.activeIcon : item.icon} 
+                    src={assetUrl(isActive && item.activeIcon ? item.activeIcon : item.icon)} 
                     alt={item.title} 
                     className={`w-12 h-12 md:w-16 md:h-16 object-contain transition-transform duration-300 group-hover:scale-110 scale-125 ${
                       isActive && !item.activeIcon ? 'brightness-0 invert' : ''

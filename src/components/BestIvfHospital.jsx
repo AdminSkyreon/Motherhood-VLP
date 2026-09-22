@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function BestIvfHospital({ data }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +61,7 @@ export default function BestIvfHospital({ data }) {
                 {/* Icon Wrapper with clean zoom effect */}
                 <div className="shrink-0 flex items-center justify-center">
                   <img 
-                    src={item.icon} 
+                    src={assetUrl(item.icon)} 
                     alt={item.title} 
                     className="w-9 h-9 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
                   />

@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function RealStories({ data }) {
   const scrollRef = useRef(null);
@@ -131,7 +132,7 @@ export default function RealStories({ data }) {
                     {data.testimonialImage && (
                       <div className="absolute bottom-1 -right-1 w-20 h-20 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
                         <img 
-                          src={data.testimonialImage} 
+                          src={assetUrl(data.testimonialImage)} 
                           alt="Mother and Baby" 
                           className="w-full h-full object-contain"
                         />

@@ -20,9 +20,11 @@ export async function generateStaticParams() {
     const hospitalsDir = path.join(process.cwd(), 'src', 'data', 'hospitals');
     const filenames = fs.readdirSync(hospitalsDir);
     
-    return filenames.map((filename) => ({
-      slug: filename.replace(/\.json$/, ''),
-    }));
+    return filenames
+      .filter((filename) => filename.endsWith('.json') && !filename.startsWith('_'))
+      .map((filename) => ({
+        slug: filename.replace(/\.json$/, ''),
+      }));
   } catch (error) {
     return [];
   }

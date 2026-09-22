@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Phone } from 'lucide-react'; 
 import VideoPlayer from './VideoPlayer';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function HeroSection({ header, heroForm }) {
   // State to manage form data
@@ -21,7 +22,7 @@ export default function HeroSection({ header, heroForm }) {
     setIsSubmitted(true);
   };
 
-  const hlsVideoSrc = "/playlist.m3u8";
+  const hlsVideoSrc = assetUrl('/playlist.m3u8');
 
   // Fallback safety check if data is undefined
   if (!heroForm) return null;
@@ -32,7 +33,7 @@ export default function HeroSection({ header, heroForm }) {
       <header className="w-full bg-white shadow-sm py-3 px-6 md:px-12 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center">
           <img 
-            src={header?.logoImg} 
+            src={assetUrl(header?.logoImg)} 
             alt={header?.logoAlt} 
             className="h-10 md:h-12 object-contain"
           />

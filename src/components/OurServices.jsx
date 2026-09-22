@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function OurServices({ data }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +44,7 @@ export default function OurServices({ data }) {
     <section 
       ref={sectionRef} 
       className="w-full pt-4 pb-16 md:pb-20 relative overflow-hidden bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${data.backgroundImage})` }}
+      style={{ backgroundImage: `url(${assetUrl(data.backgroundImage)})` }}
     >
       {/* Light overlay to keep the fixed background bright and clean */}
       <div className="absolute inset-0 bg-white/50"></div>
@@ -81,7 +82,7 @@ export default function OurServices({ data }) {
                   isLast ? `w-10 h-10 lg:w-12 lg:h-12 mr-4 lg:mr-0 lg:mb-2.5 flex-shrink-0 ${isActive ? 'mt-1 lg:mt-0' : ''}` : 'w-11 h-11 lg:w-12 lg:h-12 mb-2.5 flex-shrink-0'
                 }`}>
                   <img 
-                    src={item.icon} 
+                    src={assetUrl(item.icon)} 
                     alt={item.title} 
                     className="w-4.5 h-4.5 lg:w-6 lg:h-6 object-contain"
                   />

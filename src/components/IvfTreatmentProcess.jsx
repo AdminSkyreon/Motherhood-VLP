@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function IvfTreatmentProcess({ data }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -204,7 +205,7 @@ export default function IvfTreatmentProcess({ data }) {
 
                     <div className="relative w-[22px] h-[22px] mb-1 flex items-center justify-center">
                       <img
-                        src={isActive && step.activeIcon ? step.activeIcon : step.icon}
+                        src={assetUrl(isActive && step.activeIcon ? step.activeIcon : step.icon)}
                         alt={step.title}
                         className="w-full h-full object-contain transition-transform duration-300"
                       />
@@ -290,7 +291,7 @@ export default function IvfTreatmentProcess({ data }) {
                       isActive ? 'border-rose-400 shadow-[0_8px_30px_rgba(236,72,153,0.2)] ring-4 ring-rose-50' : 'border-gray-100'
                     }`}>
                       <img 
-                        src={isActive && step.activeIcon ? step.activeIcon : step.icon} 
+                        src={assetUrl(isActive && step.activeIcon ? step.activeIcon : step.icon)} 
                         alt={step.title} 
                         className="w-11 h-11 md:w-13 md:h-13 object-contain transition-transform duration-300 group-hover:scale-110"
                       />

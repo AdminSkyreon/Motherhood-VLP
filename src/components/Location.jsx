@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export default function Location({ data }) {
   // Agar JSON mein data nahi hai, toh section render nahi hoga
@@ -29,7 +30,7 @@ export default function Location({ data }) {
             {/* Image Box with Rounded Corners and Shadow */}
             <div className="w-full h-[240px] md:h-[280px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] bg-white border border-gray-100">
               <img 
-                src={data.buildingImage} 
+                src={assetUrl(data.buildingImage)} 
                 alt="Clinic Building Location" 
                 className="w-full h-full object-cover"
               />
@@ -52,7 +53,7 @@ export default function Location({ data }) {
             <div className="w-full h-[240px] md:h-[280px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] bg-white border border-gray-100 relative">
               <iframe
                 title="Google Map Location"
-                src={data.mapEmbedUrl}
+                src={assetUrl(data.mapEmbedUrl)}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
