@@ -1,0 +1,423 @@
+{
+  "slug": "hrbr-layout",
+  "meta": {
+    "title": "Best IVF Hospital in HRBR Layout, Bangalore | Motherhood Fertility & IVF",
+    "description": "Book an appointment at Motherhood Fertility & IVF Center in HRBR Layout, Kalyan Nagar, Bengaluru for advanced fertility care, IVF, IUI, and ICSI treatments."
+  },
+  "sections": {
+    "header": {
+      "enabled": true,
+      "logoImg": "/motherhood-fertility-logo.png",
+      "logoAlt": "Motherhood Fertility & IVF",
+      "phoneNumber": "080 6901 9060"
+    },
+    "heroForm": {
+      "enabled": true,
+      "titlePart1": "Trusted Experts in Fertility &",
+      "titlePart2": "IVF Treatment",
+      "fields": {
+        "fullName": "Full Name",
+        "language": "Preferred Language",
+        "languagesList": [
+          "English",
+          "Hindi",
+          "Kannada",
+          "Malayalam",
+          "Marathi",
+          "Tamil",
+          "Telugu",
+          "Bengali",
+          "Punjabi",
+          "Gujarati"
+        ],
+        "phone": "Phone Number"
+      },
+      "consentText": "I consent to get contacted by Motherhood IVF representatives",
+      "buttonText": "Get a Call Back",
+      "successMessage": "Thank you — our team will call you back shortly."
+    },
+    "specialBenefits": {
+      "enabled": true,
+      "title": "Special Benefits",
+      "cards": [
+        {
+          "icon": "/images/emi-icon.png",
+          "title": "0% EMI",
+          "description": "No Cost EMI on Fertility Package"
+        },
+        {
+          "icon": "/images/corporate-icon.png",
+          "title": "Corporate Benefits",
+          "description": "Exclusive offers & discounts for corporates"
+        }
+      ]
+    },
+    "doctors": {
+      "enabled": true,
+      "title": "Meet Our Fertility & IVF Specialists",
+      "items": [
+        {
+          "name": "Dr. Priyanka Reddy",
+          "specialty": "IVF Specialist",
+          "image": "/doctors/hrbr-layout/doctor1.png",
+          "ringIcon": "/images/ring-icon-pink.png",
+          "theme": "pink",
+          "qualification": "MBBS, MS – OBG, Fellowship in Reproductive Medicine, Fellowship & Diploma in Minimal Access Surgery",
+          "experience": "10+ Years of Experience",
+          "location": "HRBR Layout, Bengaluru"
+        },
+        {
+          "name": "Dr. Kusuma M Vijay",
+          "specialty": "Consultant - Reproductive Medicine",
+          "image": "/doctors/hrbr-layout/doctor2.png",
+          "ringIcon": "/images/ring-icon-blue.png",
+          "theme": "blue",
+          "qualification": "MBBS DGO, DNB - Obstetrics & Gynaecology, Fellowship in Reproductive Endocrinology & Advanced Laparoscopy",
+          "experience": "24+ Years of Experience",
+          "location": "HRBR Layout, Bengaluru"
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "enabled": true,
+      "sectionTitle": "Why Choose",
+      "sectionHighlight": "Motherhood Fertility & IVF",
+      "stats": [
+        {
+          "icon": "/images/success-stories-icon.png",
+          "number": "10K+",
+          "label": "Success Stories",
+          "dotColor": "blue"
+        },
+        {
+          "icon": "/images/doctors-icon.png",
+          "number": "1400+",
+          "label": "Doctors",
+          "dotColor": "pink"
+        },
+        {
+          "icon": "/images/ivf-centers-icon.png",
+          "number": "19",
+          "label": "IVF Centers",
+          "dotColor": "blue"
+        },
+        {
+          "icon": "/images/cities-icon.png",
+          "number": "12",
+          "label": "Cities",
+          "dotColor": null
+        }
+      ]
+    },
+    "bestIvfHospital": {
+      "enabled": true,
+      "sectionTitle": "Best IVF Hospital in HRBR Layout, Bangalore",
+      "features": [
+        {
+          "icon": "/images/ivf-treatment-icon.png",
+          "title": "Advanced IVF Treatment",
+          "description": "We provide advanced IVF treatment with the latest technology and world-class facilities."
+        },
+        {
+          "icon": "/images/ivf-experts-icon.png",
+          "title": "Experienced IVF Experts",
+          "description": "Our experienced IVF expert doctors ensure personalized care and the best outcomes."
+        },
+        {
+          "icon": "/images/success-rate-icon.png",
+          "title": "High Success Rates",
+          "description": "We are known for our high success rates and proven fertility treatment results."
+        },
+        {
+          "icon": "/images/comprehensive-care-icon.png",
+          "title": "Comprehensive Fertility Care",
+          "description": "We offer complete fertility care including IVF, IUI, ICSI, and personalized treatment plans."
+        }
+      ],
+      "overviewParagraphs": [
+        "Motherhood Fertility & IVF is one of the best IVF hospitals in HRBR Layout, Bangalore, known for advanced IVF treatment, experienced IVF expert doctors, and high success rates. We provide comprehensive fertility care including IVF, IUI, ICSI, and personalized infertility treatment plans.",
+        "Our team of leading fertility & IVF specialists uses state-of-the-art technology to treat all female infertility issues with precision and care. With a patient-focused approach and proven results, we help couples achieve their dream of parenthood."
+      ]
+    },
+    "ourServices": {
+      "enabled": true,
+      "sectionTitle": "Our Services",
+      "backgroundImage": "/images/doctor-bg.jpg",
+      "services": [
+        {
+          "icon": "/images/ivf.png",
+          "title": "IVF",
+          "subtitle": "(In Vitro Fertilization)",
+          "description": "A fertility treatment where eggs and sperm are combined in a laboratory to help achieve pregnancy."
+        },
+        {
+          "icon": "/images/iui.png",
+          "title": "IUI",
+          "subtitle": "(Intrauterine Insemination)",
+          "description": "A procedure where specially washed sperm are placed directly into the uterus around the time of ovulation."
+        },
+        {
+          "icon": "/images/icsi.png",
+          "title": "ICSI",
+          "subtitle": "",
+          "description": "A specialized form of IVF where a single sperm is injected directly into a mature egg."
+        },
+        {
+          "icon": "/images/semen-freezing.png",
+          "title": "Semen / Egg Freezing",
+          "subtitle": "",
+          "description": "A safe method to freeze and store reproductive cells for future family planning."
+        },
+        {
+          "icon": "/images/embryo-freezing.png",
+          "title": "Embryo Freezing",
+          "subtitle": "",
+          "description": "A safe method to freeze and store embryos for future fertility treatments."
+        },
+        {
+          "icon": "/images/oocyte.png",
+          "title": "Oocyte Vitrification",
+          "subtitle": "",
+          "description": "A process to extract, freeze, and store a woman's eggs to preserve reproductive potential."
+        },
+        {
+          "icon": "/images/laser-hatching.png",
+          "title": "Laser Assisted Hatching",
+          "subtitle": "",
+          "description": "A technique using a precise laser to thin the embryo's outer shell, improving implantation chances."
+        },
+        {
+          "icon": "/images/surgery.png",
+          "title": "Reproductive Surgery",
+          "subtitle": "",
+          "description": "Minimally invasive surgical procedures to diagnose and treat female reproductive tract issues."
+        },
+        {
+          "icon": "/images/ovulation.png",
+          "title": "Ovulation Induction",
+          "subtitle": "",
+          "description": "Medical treatment to stimulate the ovaries to produce one or more mature eggs."
+        }
+      ]
+    },
+    "ivfRecommended": {
+      "enabled": true,
+      "sectionTitleLine1": "IVF is recommended for",
+      "sectionTitleLine2": "couples facing",
+      "items": [
+        {
+          "icon": "/images/blocked-tubes.png",
+          "activeIcon": "/images/blocked-tubes-white.png",
+          "title": "Blocked or Damaged",
+          "subtitle": "Fallopian Tubes"
+        },
+        {
+          "icon": "/images/low-sperm.png",
+          "activeIcon": "/images/low-sperm-white.png",
+          "title": "Low Sperm Count",
+          "subtitle": "or Motility"
+        },
+        {
+          "icon": "/images/pcos.png",
+          "activeIcon": "/images/pcos-white.png",
+          "title": "PCOS or",
+          "subtitle": "Endometriosis"
+        },
+        {
+          "icon": "/images/unexplained.png",
+          "activeIcon": "/images/unexplained-white.png",
+          "title": "Unexplained",
+          "subtitle": "Infertility"
+        },
+        {
+          "icon": "/images/age-related.png",
+          "activeIcon": "/images/age-related-white.png",
+          "title": "Age-Related",
+          "subtitle": "Fertility Issues"
+        },
+        {
+          "icon": "/images/failed-iui.png",
+          "activeIcon": "/images/failed-iui-white.png",
+          "title": "Failed IUI or Previous",
+          "subtitle": "Fertility Treatments"
+        }
+      ]
+    },
+    "ivfProcess": {
+      "enabled": true,
+      "sectionTitle": "IVF Treatment Process",
+      "sectionSubtitle": "A personalised journey with advanced care at every step",
+      "steps": [
+        {
+          "stepNumber": "01",
+          "icon": "/images/step-consultation.png",
+          "activeIcon": "/images/step-consultation-pink.png",
+          "title": "Fertility Consultation & Evaluation",
+          "description": "Understand your health and create a personalised treatment plan with our experts."
+        },
+        {
+          "stepNumber": "02",
+          "icon": "/images/step-ovarian.png",
+          "activeIcon": "/images/step-ovarian-pink.png",
+          "title": "Ovarian Stimulation",
+          "description": "Medications are given to stimulate the ovaries to produce multiple eggs."
+        },
+        {
+          "stepNumber": "03",
+          "icon": "/images/step-egg.png",
+          "activeIcon": "/images/step-egg-pink.png",
+          "title": "Egg Retrieval",
+          "description": "A minor surgical procedure to safely collect the mature eggs from your ovaries."
+        },
+        {
+          "stepNumber": "04",
+          "icon": "/images/step-fertilization.png",
+          "activeIcon": "/images/step-fertilization-pink.png",
+          "title": "Fertilization",
+          "description": "Eggs are fertilized with sperm in our advanced embryology lab."
+        },
+        {
+          "stepNumber": "05",
+          "icon": "/images/step-embryo.png",
+          "activeIcon": "/images/step-embryo-pink.png",
+          "title": "Embryo Growth & Selection",
+          "description": "Embryos are monitored closely for growth and the healthiest ones are selected."
+        },
+        {
+          "stepNumber": "06",
+          "icon": "/images/step-transfer.png",
+          "activeIcon": "/images/step-transfer-pink.png",
+          "title": "Embryo Transfer",
+          "description": "A painless procedure to place the selected embryo back into the uterus."
+        },
+        {
+          "stepNumber": "07",
+          "icon": "/images/step-pregnancy.png",
+          "activeIcon": "/images/step-pregnancy-pink.png",
+          "title": "Pregnancy Test",
+          "description": "A blood test is done after 10–14 days to confirm successful pregnancy."
+        }
+      ]
+    },
+    "ivfFaqs": {
+      "enabled": true,
+      "sectionTitle": "IVF Treatment FAQs – Motherhood Fertility & IVF",
+      "faqs": [
+        {
+          "question": "How many IVF cycles are required to get pregnant?",
+          "answer": "Most couples conceive in the first IVF cycle, while others may require more than one cycle. The number of cycles depends on age, fertility condition, and embryo quality. Our specialists will create a personalized plan based on your specific needs."
+        },
+        {
+          "question": "Is bed rest required after embryo transfer?",
+          "answer": "Rigorous bed rest is generally not required after an embryo transfer. Patients can resume their light daily activities almost immediately. However, it is strongly advised to avoid heavy lifting and strenuous physical exercises for a few days."
+        },
+        {
+          "question": "Can IVF help after failed IUI or other treatments?",
+          "answer": "Yes, IVF is often recommended as a successful next step when IUI or other fertility treatments have not yielded results. IVF bypasses many common fertility blockages by managing fertilization directly in a specialized laboratory setting."
+        },
+        {
+          "question": "Is IVF suitable for working women?",
+          "answer": "Absolutely. IVF protocols are structured to fit easily into modern working schedules with minimal clinic visits required for monitoring. Most appointments take only a short time, allowing you to easily balance your career and treatment."
+        },
+        {
+          "question": "What is the success rate of IVF treatment?",
+          "answer": "The success rate of IVF depends on various factors including the woman's age, overall health history, and lifestyle choices. Advanced medical technologies and experienced specialists significantly increase the chances of a positive outcome."
+        },
+        {
+          "question": "Are there any side effects of IVF?",
+          "answer": "Some women may experience mild bloating, cramping, or temporary mood shifts due to hormonal medications used during stimulation. These symptoms typically subside naturally within a short span of time after completing the cycle."
+        },
+        {
+          "question": "How much does IVF treatment cost?",
+          "answer": "The cost of IVF treatment varies depending on individual medical requirements, prescribed medications, and required diagnostic procedures. We provide transparent pricing packages tailored closely to your specific healthcare plan."
+        },
+        {
+          "question": "Can I get pregnant naturally after IVF?",
+          "answer": "Yes, it is entirely possible to achieve a natural pregnancy after having a child through IVF. While underlying fertility factors may still apply, many couples experience restored or improved reproductive balance following successful treatment."
+        }
+      ]
+    },
+    "realStories": {
+      "enabled": true,
+      "sectionTitle": "Real Stories. Real Joy. Real Families.",
+      "testimonialImage": "/images/mother-baby.png",
+      "ratings": {
+        "google": {
+          "rating": "4.8",
+          "reviewsCount": "1956 reviews"
+        },
+        "practo": {
+          "rating": "4.9",
+          "reviewsCount": "1248 reviews"
+        }
+      },
+      "testimonials": [
+        {
+          "id": 1,
+          "comment": "“ಎಲ್ಲಾ ಸಿಬ್ಬಂದಿಗಳು ತುಂಬಾ ಚೆನ್ನಾಗಿ ಸ್ಪಂದಿಸುತ್ತಾರೆ. ಇದು ನಮ್ಮ ಲಕ್ಕಿ ಆಸ್ಪತ್ರೆ ಅನ್ನಿಸುತ್ತದೆ. ಇಲ್ಲಿನ ಡಾಕ್ಟರ್ಸ್ ಮತ್ತು ಸ್ಟಾಫ್ ತುಂಬಾ ಕೇರ್ ಮಾಡ್ತಾರೆ, ತುಂಬಾ ಧನ್ಯವಾದಗಳು.”",
+          "author": "Rudresha KS Ksr"
+        },
+        {
+          "id": 2,
+          "comment": "“Had a great experience at Motherhood Fertility & IVF Center. The doctors are very supportive and explain everything clearly throughout the treatment journey. We are extremely grateful.”",
+          "author": "Arvindn Hrs"
+        },
+        {
+          "id": 3,
+          "comment": "“Thank you so much doctors. I got a female baby after 9 years. My dream came true. The medical care and emotional support provided here gave us the strength to keep going.”",
+          "author": "Ganesan Padmatvathi"
+        },
+        {
+          "id": 4,
+          "comment": "“I am very happy today. Today I heard the happy news. I can't express my happiness in words. Special thanks to all the doctors and nursing staff who made this wonderful journey successful.”",
+          "author": "Surya Devraj"
+        },
+        {
+          "id": 5,
+          "comment": "“I visited this hospital and I felt this hospital is the best fertility centre. All the facilities are top class, and the environment is very positive and hygienic. Highly recommended.”",
+          "author": "Mr. Saju Laskar"
+        },
+        {
+          "id": 6,
+          "comment": "“Excellent experience at Motherhood Clinic. The IVF process was smooth, doctors were experienced, and every single query of ours was handled with utmost patience.”",
+          "author": "Amit Kumar"
+        },
+        {
+          "id": 7,
+          "comment": "“I feel very happy choosing Motherhood Hospital for my fertility treatment. They took good care of us like a family member, ensuring transparency and comfort at every single step.”",
+          "author": "Shabuddeen S"
+        },
+        {
+          "id": 8,
+          "comment": "“The consultation was thorough, and every step of the diagnosis and treatment was explained patiently. We never felt rushed during our appointments, and results exceeded expectations.”",
+          "author": "Jayasree Hemanth"
+        }
+      ]
+    },
+    "location": {
+      "enabled": true,
+      "sectionTitle": "Find us at this location",
+      "buildingImage": "/images/clinic-building.jpg",
+      "address": "5th A Cross Rd HRBR Layout, Kalyan Nagar Bengaluru Karnataka 560043",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2201684127963!2d77.64863969999999!3d13.021646899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17e3105b77d1%3A0x6ad0e1377d235be2!2sMotherhood%20Fertility%20%26%20IVF%20Center%20-%20Best%20IVF%20Centre%20in%20HRBR%20Layout%2C%20Bangalore%20%7C%20Infertility%20Treatment!5e0!3m2!1sen!2sus!4v1789153600241!5m2!1sen!2sus",
+      "callAction": {
+        "text": "Call Now",
+        "phoneNumber": "+919876543210"
+      },
+      "bookAction": {
+        "text": "Book Now",
+        "link": "#book-appointment"
+      }
+    },
+    "footer": {
+      "enabled": true,
+      "hospitalName": "Motherhood Fertility & IVF",
+      "branch": "HRBR Layout, Kalyan Nagar",
+      "phone": "080 6901 9060",
+      "links": {
+        "privacyPolicy": "#",
+        "terms": "#"
+      }
+    }
+  }
+}

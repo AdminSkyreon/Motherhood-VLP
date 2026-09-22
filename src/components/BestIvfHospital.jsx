@@ -1,8 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import data from '@/data/bestIvfHospitalData.json';
 
-export default function BestIvfHospital() {
+export default function BestIvfHospital({ data }) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -26,6 +25,11 @@ export default function BestIvfHospital() {
       }
     };
   }, []);
+
+  // Agar JSON mein data, features ya overviewParagraphs nahi hain, toh section render nahi hoga
+  if (!data || !data.features || !data.overviewParagraphs) {
+    return null;
+  }
 
   return (
     <section 

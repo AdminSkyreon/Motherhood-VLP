@@ -1,13 +1,17 @@
 'use client';
 import React, { useState } from 'react';
-import data from '@/data/ivfFaqData.json';
 
-export default function IvfTreatmentFaqs() {
+export default function IvfTreatmentFaqs({ data }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  // Agar JSON mein data ya faqs nahi hain, toh section render nahi hoga
+  if (!data || !data.faqs || data.faqs.length === 0) {
+    return null;
+  }
 
   // Helper function to generate SVG icons with dynamic color based on open state
   const getFaqIcon = (index, isOpen) => {
@@ -47,8 +51,8 @@ export default function IvfTreatmentFaqs() {
           </h2>
         </div>
 
-        {/* FAQs Grid Layout (2 Columns with tight gap) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 w-full max-w-6xl">
+        {/* FAQs Grid Layout (2 Columns with tight gap and items-start to prevent card stretching issues) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 w-full max-w-6xl items-start">
           {data.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -56,7 +60,7 @@ export default function IvfTreatmentFaqs() {
               <div 
                 key={index}
                 onClick={() => toggleAccordion(index)}
-                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 transform hover:-translate-y-1 cursor-pointer bg-white ${
+                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer bg-white ${
                   isOpen 
                     ? 'border-[#DB5070]/50 shadow-[0_12px_30px_rgba(219,80,112,0.12)]' 
                     : 'border-gray-100 hover:border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_25px_rgba(0,0,0,0.06)]'
@@ -68,8 +72,8 @@ export default function IvfTreatmentFaqs() {
                 )}
 
                 {/* FAQ Header Card (Question Area - Always White) */}
-                <div className="flex items-center justify-between py-3 px-4 md:px-5 bg-white">
-                  <div className="flex items-center space-x-3.5">
+                <div className="flex items-center justify-between py-4 px-4 md:px-5 bg-white gap-3">
+                  <div className="flex items-center space-x-3.5 min-w-0 flex-1">
                     {/* Main Icon Container - Changes background when open */}
                     <div 
                       className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
@@ -78,9 +82,9 @@ export default function IvfTreatmentFaqs() {
                       {getFaqIcon(index, isOpen)}
                     </div>
 
-                    {/* Question Title */}
+                    {/* Question Title with proper wrapping */}
                     <h3 
-                      className="font-bold text-sm md:text-base text-[#111111] pr-2" 
+                      className="font-bold text-sm md:text-base text-[#111111] leading-snug break-words" 
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
                       {faq.question}
@@ -100,13 +104,13 @@ export default function IvfTreatmentFaqs() {
                 {/* Smooth Expandable Answer Section */}
                 <div 
                   className={`transition-all duration-300 ease-in-out overflow-hidden px-4 md:px-5 border-t ${
-                    isOpen ? 'max-h-48 pb-4 opacity-100 border-[#FFF4F8]' : 'max-h-0 pb-0 opacity-0 border-transparent'
+                    isOpen ? 'max-h-64 pb-4 opacity-100 border-[#FFF4F8]' : 'max-h-0 pb-0 opacity-0 border-transparent'
                   }`}
                   style={{ backgroundColor: isOpen ? '#FFF4F8' : '#ffffff' }}
                 >
-                  <div className="pl-[45px] pt-1">
+                  <div className="pl-[45px] pt-2">
                     <p 
-                      className="text-gray-600 text-xs md:text-sm leading-relaxed" 
+                      className="text-gray-600 text-xs md:text-sm leading-relaxed break-words" 
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
                       {faq.answer}

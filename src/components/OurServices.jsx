@@ -1,8 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import data from '@/data/ourServicesData.json';
 
-export default function OurServices() {
+export default function OurServices({ data }) {
   const [isVisible, setIsVisible] = useState(false);
   // activeCard state track karegi ki kaunsa card click hua hai
   const [activeCard, setActiveCard] = useState(null);
@@ -28,6 +27,11 @@ export default function OurServices() {
       }
     };
   }, []);
+
+  // Agar JSON mein data ya services nahi hain, toh section render nahi hoga
+  if (!data || !data.services || data.services.length === 0) {
+    return null;
+  }
 
   // Card par click handle karne ke liye function
   const handleCardClick = (index) => {

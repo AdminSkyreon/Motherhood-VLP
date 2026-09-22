@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import data from '@/data/doctorSpecialistsData.json';
 import { GraduationCap, Stethoscope, MapPin, Calendar } from 'lucide-react';
 
-export default function FertilitySpecialists() {
+export default function FertilitySpecialists({ data }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
 
@@ -11,22 +10,27 @@ export default function FertilitySpecialists() {
     setIsLoaded(true);
   }, []);
 
+  // Agar JSON mein data ya items nahi hai, toh section render nahi hoga
+  if (!data || !data.items || data.items.length === 0) {
+    return null;
+  }
+
   return (
     <section className="w-full pt-0 pb-6 my-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-sky-50/50 backdrop-blur-md border-b border-blue-100/60 shadow-sm relative">
       <div className="max-w-4xl mx-auto px-4 pt-1 flex flex-col items-center">
         
-        {/* Section Title - Maximum proximity to the top section */}
+        {/* Section Title */}
         <h2 className={`text-[24px] md:text-3xl lg:text-4xl font-bold text-[#111111] text-center mb-2 md:mb-3 max-w-[340px] md:max-w-none leading-tight transition-all duration-700 transform ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
         }`}>
-          Meet Our Fertility & IVF <span className="block md:inline">Specialists</span>
+          {data.title || "Meet Our Fertility & IVF Specialists"}
         </h2>
 
-        {/* Doctor Cards Container: Flex-nowrap with horizontal scroll on mobile, flex-wrap on desktop */}
+        {/* Doctor Cards Container */}
         <div className={`w-full flex md:flex-wrap flex-nowrap overflow-x-auto md:overflow-visible justify-start md:justify-center items-start gap-4 pb-4 md:pb-0 px-2 scrollbar-thin transition-all duration-1000 transform ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          {data.doctors.map((doc, index) => {
+          {data.items.map((doc, index) => {
             const isActive = activeCard === index;
 
             return (
@@ -124,7 +128,6 @@ export default function FertilitySpecialists() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    // Add your booking logic here
                   }}
                   className="w-full max-w-[280px] py-2 px-4 rounded-full bg-[#DB5070] hover:bg-[#c44463] text-white font-medium text-xs shadow-[0_4px_10px_rgba(219,80,112,0.3)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-1.5"
                 >
@@ -139,12 +142,10 @@ export default function FertilitySpecialists() {
 
       </div>
 
-      {/* Vertical Fixed Sticky 'Book Now' Button on Right Side (Visible on both mobile & desktop) */}
+      {/* Vertical Fixed Sticky 'Book Now' Button on Right Side */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
         <button 
-          onClick={() => {
-            // Yahan apna booking modal ya action likhein
-          }}
+          onClick={() => {}}
           className="bg-[#DB5070] hover:bg-[#c44463] text-white font-semibold py-3 px-2 rounded-l-xl shadow-[0_4px_20px_rgba(219,80,112,0.4)] [writing-mode:vertical-rl] tracking-widest text-xs uppercase transition-all duration-300"
         >
           Book Now

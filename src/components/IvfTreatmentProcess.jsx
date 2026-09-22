@@ -1,8 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import data from '@/data/ivfProcessData.json';
 
-export default function IvfTreatmentProcess() {
+export default function IvfTreatmentProcess({ data }) {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null); 
   const sectionRef = useRef(null);
@@ -27,6 +26,11 @@ export default function IvfTreatmentProcess() {
       }
     };
   }, []);
+
+  // Agar JSON mein data ya steps nahi hain, toh section render nahi hoga
+  if (!data || !data.steps || data.steps.length === 0) {
+    return null;
+  }
 
   const formatTitle = (title) => {
     const words = title.split(' ');
@@ -59,12 +63,14 @@ export default function IvfTreatmentProcess() {
           >
             {data.sectionTitle}
           </h2>
-          <p 
-            className="hidden lg:block text-gray-600 text-base font-medium max-w-xl mx-auto px-4" 
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
-            {data.sectionSubtitle}
-          </p>
+          {data.sectionSubtitle && (
+            <p 
+              className="hidden lg:block text-gray-600 text-base font-medium max-w-xl mx-auto px-4" 
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              {data.sectionSubtitle}
+            </p>
+          )}
         </div>
 
 
