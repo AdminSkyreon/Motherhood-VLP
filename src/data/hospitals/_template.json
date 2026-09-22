@@ -1,0 +1,214 @@
+{
+  "slug": "city-name",
+  "meta": {
+    "title": "Best IVF Hospital in [City Name], [State] | Motherhood Fertility & IVF",
+    "description": "Book an appointment at Motherhood Fertility & IVF Center in [City Name] for advanced fertility care, IVF, IUI, and ICSI treatments."
+  },
+  "sections": {
+    "header": {
+      "enabled": true,
+      "logoImg": "/motherhood-fertility-logo.png",
+      "logoAlt": "Motherhood Fertility & IVF",
+      "phoneNumber": "[Phone Number]"
+    },
+    "heroForm": {
+      "enabled": true,
+      "titlePart1": "Trusted Experts in Fertility &",
+      "titlePart2": "IVF Treatment",
+      "fields": {
+        "fullName": "Full Name",
+        "language": "Preferred Language",
+        "languagesList": [
+          "English",
+          "Hindi",
+          "Kannada",
+          "Malayalam",
+          "Marathi",
+          "Tamil",
+          "Telugu",
+          "Bengali",
+          "Punjabi",
+          "Gujarati"
+        ],
+        "phone": "Phone Number"
+      },
+      "consentText": "I consent to get contacted by Motherhood IVF representatives",
+      "buttonText": "Get a Call Back",
+      "successMessage": "Thank you — our team will call you back shortly."
+    },
+    "specialBenefits": {
+      "enabled": true,
+      "title": "Special Benefits",
+      "cards": [
+        {
+          "icon": "/images/emi-icon.png",
+          "title": "0% EMI",
+          "description": "No Cost EMI on Fertility Package"
+        },
+        {
+          "icon": "/images/corporate-icon.png",
+          "title": "Corporate Benefits",
+          "description": "Exclusive offers & discounts for corporates"
+        }
+      ]
+    },
+    "doctors": {
+      "enabled": true,
+      "title": "Meet Our Fertility & IVF Specialists",
+      "items": [
+        {
+          "name": "Dr. Specialist Name",
+          "specialty": "IVF Specialist",
+          "image": "/doctors/city-name/doctor1.png",
+          "ringIcon": "/images/ring-icon-pink.png",
+          "theme": "pink",
+          "qualification": "MBBS, MS – OBG",
+          "experience": "10+ Years of Experience",
+          "location": "[City Name]"
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "enabled": true,
+      "sectionTitle": "Why Choose",
+      "sectionHighlight": "Motherhood Fertility & IVF",
+      "stats": [
+        {
+          "icon": "/images/success-stories-icon.png",
+          "number": "10K+",
+          "label": "Success Stories",
+          "dotColor": "blue"
+        },
+        {
+          "icon": "/images/doctors-icon.png",
+          "number": "1400+",
+          "label": "Doctors",
+          "dotColor": "pink"
+        },
+        {
+          "icon": "/images/ivf-centers-icon.png",
+          "number": "19",
+          "label": "IVF Centers",
+          "dotColor": "blue"
+        },
+        {
+          "icon": "/images/cities-icon.png",
+          "number": "12",
+          "label": "Cities",
+          "dotColor": null
+        }
+      ]
+    },
+    "bestIvfHospital": {
+      "enabled": true,
+      "sectionTitle": "Best IVF Hospital in [City Name]",
+      "features": [
+        {
+          "icon": "/images/ivf-treatment-icon.png",
+          "title": "Advanced IVF Treatment",
+          "description": "We provide advanced IVF treatment with the latest technology and world-class facilities."
+        }
+      ],
+      "overviewParagraphs": [
+        "Motherhood Fertility & IVF is one of the best IVF hospitals..."
+      ]
+    },
+    "ourServices": {
+      "enabled": true,
+      "sectionTitle": "Our Services",
+      "backgroundImage": "/images/doctor-bg.jpg",
+      "services": [
+        {
+          "icon": "/images/ivf.png",
+          "title": "IVF",
+          "subtitle": "(In Vitro Fertilization)",
+          "description": "A fertility treatment where eggs and sperm are combined in a laboratory."
+        }
+      ]
+    },
+    "ivfRecommended": {
+      "enabled": true,
+      "sectionTitleLine1": "IVF is recommended for",
+      "sectionTitleLine2": "couples facing",
+      "items": [
+        {
+          "icon": "/images/blocked-tubes.png",
+          "activeIcon": "/images/blocked-tubes-white.png",
+          "title": "Blocked or Damaged",
+          "subtitle": "Fallopian Tubes"
+        }
+      ]
+    },
+    "ivfProcess": {
+      "enabled": true,
+      "sectionTitle": "IVF Treatment Process",
+      "sectionSubtitle": "A personalised journey with advanced care at every step",
+      "steps": [
+        {
+          "stepNumber": "01",
+          "icon": "/images/step-consultation.png",
+          "activeIcon": "/images/step-consultation-pink.png",
+          "title": "Fertility Consultation & Evaluation",
+          "description": "Understand your health and create a personalised treatment plan."
+        }
+      ]
+    },
+    "ivfFaqs": {
+      "enabled": true,
+      "sectionTitle": "IVF Treatment FAQs",
+      "faqs": [
+        {
+          "question": "How many IVF cycles are required?",
+          "answer": "Most couples conceive in the first IVF cycle..."
+        }
+      ]
+    },
+    "realStories": {
+      "enabled": true,
+      "sectionTitle": "Real Stories. Real Joy. Real Families.",
+      "testimonialImage": "/images/mother-baby.png",
+      "ratings": {
+        "google": {
+          "rating": "4.8",
+          "reviewsCount": "1956 reviews"
+        },
+        "practo": {
+          "rating": "4.9",
+          "reviewsCount": "1248 reviews"
+        }
+      },
+      "testimonials": [
+        {
+          "id": 1,
+          "comment": "Had a great experience...",
+          "author": "Patient Name"
+        }
+      ]
+    },
+    "location": {
+      "enabled": true,
+      "sectionTitle": "Find us at this location",
+      "buildingImage": "/images/clinic-building.jpg",
+      "address": "Full Address here",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=...",
+      "callAction": {
+        "text": "Call Now",
+        "phoneNumber": "+919876543210"
+      },
+      "bookAction": {
+        "text": "Book Now",
+        "link": "#book-appointment"
+      }
+    },
+    "footer": {
+      "enabled": true,
+      "hospitalName": "Motherhood Fertility & IVF",
+      "branch": "Branch Name",
+      "phone": "[Phone Number]",
+      "links": {
+        "privacyPolicy": "#",
+        "terms": "#"
+      }
+    }
+  }
+}

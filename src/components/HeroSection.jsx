@@ -1,10 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import data from '@/data/heroData.json';
 import { Phone } from 'lucide-react'; 
 import VideoPlayer from './VideoPlayer';
 
-export default function HeroSection() {
+export default function HeroSection({ header, heroForm }) {
   // State to manage form data
   const [formData, setFormData] = useState({
     fullName: '',
@@ -24,24 +23,27 @@ export default function HeroSection() {
 
   const hlsVideoSrc = "/playlist.m3u8";
 
+  // Fallback safety check if data is undefined
+  if (!heroForm) return null;
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pt-20 md:pt-24" style={{ fontFamily: 'Montserrat, sans-serif' }}>
       {/* Header */}
       <header className="w-full bg-white shadow-sm py-3 px-6 md:px-12 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center">
           <img 
-            src={data.header.logoImg} 
-            alt={data.header.logoAlt} 
+            src={header?.logoImg} 
+            alt={header?.logoAlt} 
             className="h-10 md:h-12 object-contain"
           />
         </div>
         <div>
           <a 
-            href={`tel:${data.header.phoneNumber}`}
+            href={`tel:${header?.phoneNumber}`}
             className="bg-[#DB5070] hover:bg-[#c2425e] text-white font-bold px-6 py-2.5 rounded-full flex items-center gap-2 text-base md:text-lg shadow-[0_8px_20px_rgba(219,80,112,0.35)] hover:-translate-y-0.5 transition-all duration-200"
           >
             <Phone size={20} strokeWidth={2.5} /> 
-            <span>{data.header.phoneNumber}</span>
+            <span>{header?.phoneNumber}</span>
           </a>
         </div>
       </header>
@@ -58,8 +60,8 @@ export default function HeroSection() {
         <div className="lg:col-span-5 flex flex-col justify-between">
           {/* Form Title */}
           <h2 className="font-bold text-[#231F20] mb-3 text-center leading-tight text-[22px] md:text-[25px]">
-            <span className="block whitespace-nowrap">{data.heroForm.titlePart1}</span>
-            <span className="block">{data.heroForm.titlePart2}</span>
+            <span className="block whitespace-nowrap">{heroForm.titlePart1}</span>
+            <span className="block">{heroForm.titlePart2}</span>
           </h2>
 
           {/* Form Container with Blue Glass Glow/Shadow effect */}
@@ -68,7 +70,7 @@ export default function HeroSection() {
               // Show Thank You Message from JSON
               <div className="w-full text-center py-12 px-4 bg-green-50 rounded-2xl border border-green-200">
                 <p className="text-[#166534] text-lg md:text-xl font-medium">
-                  {data.heroForm.successMessage}
+                  {heroForm.successMessage}
                 </p>
               </div>
             ) : (
@@ -77,11 +79,11 @@ export default function HeroSection() {
                 {/* Full Name Field */}
                 <div>
                   <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {data.heroForm.fields.fullName}
+                    {heroForm.fields.fullName}
                   </label>
                   <input 
                     type="text" 
-                    placeholder={data.heroForm.fields.fullName}
+                    placeholder={heroForm.fields.fullName}
                     value={formData.fullName}
                     onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                     required
@@ -92,14 +94,14 @@ export default function HeroSection() {
                 {/* Language Field */}
                 <div>
                   <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {data.heroForm.fields.language}
+                    {heroForm.fields.language}
                   </label>
                   <select 
                     value={formData.language}
                     onChange={(e) => setFormData({...formData, language: e.target.value})}
                     className="w-full px-3.5 py-2 rounded-xl border border-pink-200 bg-white focus:outline-none focus:ring-1 focus:ring-[#DB5070] text-gray-800 text-sm"
                   >
-                    {data.heroForm.fields.languagesList.map((lang, index) => (
+                    {heroForm.fields.languagesList.map((lang, index) => (
                       <option key={index} value={lang}>{lang}</option>
                     ))}
                   </select>
@@ -108,7 +110,7 @@ export default function HeroSection() {
                 {/* Phone Number Field */}
                 <div>
                   <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {data.heroForm.fields.phone}
+                    {heroForm.fields.phone}
                   </label>
                   <div className="flex rounded-xl border border-pink-200 overflow-hidden focus-within:ring-1 focus-within:ring-[#DB5070] bg-white">
                     <span className="px-3 flex items-center text-gray-800 font-semibold text-sm border-r border-pink-200 bg-white">
@@ -116,7 +118,7 @@ export default function HeroSection() {
                     </span>
                     <input 
                       type="tel" 
-                      placeholder={data.heroForm.fields.phone}
+                      placeholder={heroForm.fields.phone}
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       required
@@ -137,7 +139,7 @@ export default function HeroSection() {
                     className="mt-0.5 h-4 w-4 border-gray-300 rounded cursor-pointer"
                   />
                   <label htmlFor="consent" className="text-[11px] text-gray-600 leading-tight cursor-pointer">
-                    {data.heroForm.consentText}
+                    {heroForm.consentText}
                   </label>
                 </div>
 
@@ -146,7 +148,7 @@ export default function HeroSection() {
                   type="submit"
                   className="w-full bg-[#DB5070] hover:bg-[#c2425e] text-white font-semibold py-2.5 rounded-full shadow-lg transition-all mt-1 text-sm md:text-base"
                 >
-                  {data.heroForm.buttonText}
+                  {heroForm.buttonText}
                 </button>
               </form>
             )}

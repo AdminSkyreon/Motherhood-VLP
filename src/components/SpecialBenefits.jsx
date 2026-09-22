@@ -1,14 +1,16 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import data from '@/data/specialBenefitsData.json';
 
-export default function SpecialBenefits() {
+export default function SpecialBenefits({ data }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Triggers entrance animation right after component mounts on page refresh
     setIsLoaded(true);
   }, []);
+
+  // Safety check agar data na mile
+  if (!data) return null;
 
   return (
     <section className="w-full max-w-5xl mx-auto px-4 md:px-6 pt-0 pb-8 overflow-hidden">
@@ -23,7 +25,7 @@ export default function SpecialBenefits() {
       <div className={`grid grid-cols-2 gap-3.5 md:flex md:flex-row justify-center items-stretch md:items-center md:gap-6 transition-all duration-1000 transform ${
         isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
-        {data.cards.map((card, index) => (
+        {data.cards?.map((card, index) => (
           <div 
             key={index}
             // 'group' class added for hover effects
@@ -50,33 +52,13 @@ export default function SpecialBenefits() {
               />
             </div>
 
-            {/* Text Content */}
+            {/* Text Content Dynamic from JSON */}
             <div className="w-full md:pl-3.5">
               <h3 className="text-xs md:text-[15px] font-bold text-[#231F20] leading-tight">
-                {index === 0 ? (
-                  card.title
-                ) : (
-                  <>
-                    <span>Corporate</span>
-                    <br />
-                    <span>Benefits</span>
-                  </>
-                )}
+                {card.title}
               </h3>
               <p className="text-[10px] md:text-[11px] text-gray-600 leading-relaxed mt-1.5 md:mt-0.5">
-                {index === 0 ? (
-                  <>
-                    <span>No Cost EMI on</span>
-                    <br />
-                    <span>Fertility Package</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Exclusive offers & discounts</span>
-                    <br />
-                    <span>for corporates</span>
-                  </>
-                )}
+                {card.description}
               </p>
             </div>
           </div>

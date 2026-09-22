@@ -1,8 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import data from '@/data/ivfRecommendedData.json';
 
-export default function IvfRecommended() {
+export default function IvfRecommended({ data }) {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
   const sectionRef = useRef(null);
@@ -28,6 +27,11 @@ export default function IvfRecommended() {
     };
   }, []);
 
+  // Agar JSON mein data ya items nahi hain, toh section render nahi hoga
+  if (!data || !data.items || data.items.length === 0) {
+    return null;
+  }
+
   const handleCardClick = (index) => {
     setActiveCard(activeCard === index ? null : index);
   };
@@ -43,8 +47,8 @@ export default function IvfRecommended() {
         <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-[#111111] text-center mb-10 md:mb-12 leading-tight transition-all duration-700 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
         }`}>
-          <span>{data.sectionTitleLine1}</span>
-          <span className="block mt-1">{data.sectionTitleLine2}</span>
+          {data.sectionTitleLine1 && <span>{data.sectionTitleLine1}</span>}
+          {data.sectionTitleLine2 && <span className="block mt-1">{data.sectionTitleLine2}</span>}
         </h2>
 
         {/* Grid Container */}

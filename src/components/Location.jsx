@@ -1,8 +1,12 @@
 'use client';
 import React from 'react';
-import data from '@/data/location.json';
 
-export default function Location() {
+export default function Location({ data }) {
+  // Agar JSON mein data nahi hai, toh section render nahi hoga
+  if (!data) {
+    return null;
+  }
+
   return (
     <section className="w-full py-8 md:py-12 px-4 bg-[#f4f7fb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
@@ -31,14 +35,13 @@ export default function Location() {
               />
             </div>
             
-            {/* Address Text with exact 2-line break */}
+            {/* Address Text (Dynamic from data) */}
             <div className="mt-5 text-center px-4 max-w-md">
               <address 
                 className="not-italic text-[16px] text-[#231F20] font-normal leading-relaxed"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
-                5th A Cross Rd HRBR Layout, Kalyan Nagar<br />
-                Bengaluru, Karnataka 560043
+                {data.address}
               </address>
             </div>
           </div>
@@ -65,20 +68,20 @@ export default function Location() {
               
               {/* Call Now Button */}
               <a
-                href={`tel:${data.callAction.phoneNumber}`}
+                href={`tel:${data.callAction?.phoneNumber}`}
                 className="w-[150px] md:w-[140px] bg-[#DB5070] hover:bg-[#c24361] text-white font-bold py-3 px-4 rounded-full shadow-[0_4px_14px_rgba(219,80,112,0.35)] transition-all duration-300 flex items-center justify-center text-xs md:text-sm tracking-wide"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
-                <span>{data.callAction.text}</span>
+                <span>{data.callAction?.text}</span>
               </a>
 
               {/* Book Now Button */}
               <a
-                href={data.bookAction.link}
+                href={data.bookAction?.link}
                 className="w-[150px] md:w-[140px] bg-[#DB5070] hover:bg-[#c24361] text-white font-bold py-3 px-4 rounded-full shadow-[0_4px_14px_rgba(219,80,112,0.35)] transition-all duration-300 flex items-center justify-center text-xs md:text-sm tracking-wide"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
-                <span>{data.bookAction.text}</span>
+                <span>{data.bookAction?.text}</span>
               </a>
 
             </div>

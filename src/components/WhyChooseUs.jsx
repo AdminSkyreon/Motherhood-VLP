@@ -1,8 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import data from '@/data/whyChooseData.json';
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ data }) {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const sectionRef = useRef(null);
@@ -27,6 +26,11 @@ export default function WhyChooseUs() {
       }
     };
   }, []);
+
+  // Agar JSON mein data ya stats nahi hain, toh section render nahi hoga
+  if (!data || !data.stats || data.stats.length === 0) {
+    return null;
+  }
 
   return (
     <section 

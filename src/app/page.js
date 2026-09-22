@@ -9,6 +9,7 @@ import IvfTreatmentProcess from '@/components/IvfTreatmentProcess';
 import IvfTreatmentFaqs from '@/components/IvfTreatmentFaqs';
 import RealStories from '@/components/RealStories';
 import Location from '@/components/Location';
+import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main>
@@ -23,6 +24,7 @@ export default function Home() {
       <IvfTreatmentFaqs />
       <RealStories />
       <Location />
+      <Footer />
     </main>
   );
 }
