@@ -15,6 +15,19 @@ import RealStories from '@/components/RealStories';
 import Location from '@/components/Location';
 import Footer from '@/components/Footer';
 
+export async function generateStaticParams() {
+  try {
+    const hospitalsDir = path.join(process.cwd(), 'src', 'data', 'hospitals');
+    const filenames = fs.readdirSync(hospitalsDir);
+    
+    return filenames.map((filename) => ({
+      slug: filename.replace(/\.json$/, ''),
+    }));
+  } catch (error) {
+    return [];
+  }
+}
+
 function getHospitalBySlug(slug) {
   try {
     const filePath = path.join(process.cwd(), 'src', 'data', 'hospitals', `${slug}.json`);
