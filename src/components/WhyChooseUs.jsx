@@ -36,7 +36,7 @@ export default function WhyChooseUs({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-0 pb-4 md:pb-6 my-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-sky-50/50 backdrop-blur-md shadow-sm relative overflow-hidden"
+      className="w-full pt-0 pb-4 md:pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 shadow-sm relative overflow-x-hidden"
     >
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
         
@@ -49,14 +49,14 @@ export default function WhyChooseUs({ data }) {
         </h2>
 
         {/* Cards Grid Container */}
-        <div className={`w-full grid grid-cols-2 lg:flex lg:flex-nowrap justify-center items-center gap-3 md:gap-2 px-1 transition-all duration-1000 delay-200 transform ${
+        <div className={`w-full max-w-lg md:max-w-none grid grid-cols-2 lg:flex lg:flex-nowrap justify-center items-center gap-3 md:gap-2 px-1 transition-all duration-1000 delay-200 transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           {data.stats.map((item, index) => {
             const isActive = activeIndex === index;
 
             return (
-              <div key={index} className="flex items-center justify-center lg:justify-start shrink-0">
+              <div key={index} className="flex items-center justify-center lg:justify-start shrink-0 w-full lg:w-auto">
                 
                 {/* Card Box */}
                 <div 
@@ -112,7 +112,7 @@ export default function WhyChooseUs({ data }) {
 
                 </div>
 
-                {/* Connecting Dotted Line & Dot */}
+                {/* Connecting Dotted Line & Dot (Original Gap Restored) */}
                 {index < data.stats.length - 1 && (
                   <div className="hidden lg:flex items-center">
                     <div className="w-6 xl:w-8 border-t-2 border-dotted border-blue-300 relative flex items-center justify-center">

@@ -48,14 +48,14 @@ export default function IvfTreatmentProcess({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-6 lg:pt-10 pb-4 lg:pb-6 relative z-30 overflow-hidden bg-[#f4f7fb]"
+      className="w-full pt-6 lg:pt-10 pb-4 lg:pb-6 relative z-30 overflow-x-hidden bg-[#f4f7fb]"
     >
-      <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center w-full">
         
         {/* =====================================================
             SECTION TITLE & SUBTITLE 
         ===================================================== */}
-        <div className={`text-center mb-6 lg:mb-8 transition-all duration-700 transform ${
+        <div className={`text-center mb-6 lg:mb-8 transition-all duration-700 transform w-full ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
         }`}>
           <h2 
@@ -82,16 +82,17 @@ export default function IvfTreatmentProcess({ data }) {
           <div
             className="
               relative
-              w-[92vw]
-              max-w-[360px]
+              w-[88vw]
+              max-w-[340px]
               aspect-square
               rounded-full
               border
               border-dashed
-              border-pink-300
+              border-[#DB5070]/30
               bg-white
               shadow-[0_10px_30px_rgba(0,0,0,0.04)]
               overflow-hidden
+              mx-auto
             "
           >
             {/* Bluish-Glass Conic Gradient Slices */}
@@ -123,7 +124,7 @@ export default function IvfTreatmentProcess({ data }) {
             {/* Active Slice Highlight (Exact Slice Shape) */}
             {selectedIndex !== null && (
               <div 
-                className="absolute inset-0 bg-pink-50/90 pointer-events-none transition-all duration-300 z-10"
+                className="absolute inset-0 bg-[#DB5070]/10 pointer-events-none transition-all duration-300 z-10"
                 style={{
                   clipPath: 'polygon(50% 50%, 25% 0%, 75% 0%)',
                   transform: `rotate(${selectedIndex * (360 / data.steps.length)}deg)`,
@@ -145,8 +146,8 @@ export default function IvfTreatmentProcess({ data }) {
                 rounded-full
                 bg-white
                 border-2
-                border-pink-100
-                shadow-[0_4px_20px_rgba(236,72,153,0.18)]
+                border-[#DB5070]/20
+                shadow-[0_4px_20px_rgba(219,80,112,0.18)]
                 flex
                 flex-col
                 items-center
@@ -154,7 +155,7 @@ export default function IvfTreatmentProcess({ data }) {
                 z-30
               "
             >
-              <div className="text-rose-500 mb-0.5">
+              <div className="text-[#DB5070] mb-0.5">
                 <svg
                   width="20"
                   height="20"
@@ -174,7 +175,7 @@ export default function IvfTreatmentProcess({ data }) {
                 className="text-[#0B2545] font-bold text-[9.5px] tracking-tight"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
-                Your Journey
+                Your IVF Journey
               </span>
             </div>
 
@@ -190,7 +191,7 @@ export default function IvfTreatmentProcess({ data }) {
                   onClick={() => setSelectedIndex(index)}
                   className="absolute left-1/2 top-1/2 w-[32%] h-[32%] z-20 cursor-pointer"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-112%)`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-106%)`,
                   }}
                 >
                   <div
@@ -198,7 +199,7 @@ export default function IvfTreatmentProcess({ data }) {
                     style={{ transform: `rotate(${-angle}deg)` }}
                   >
                     <div className={`font-bold text-[11px] leading-none mb-1 px-1.5 py-0.5 rounded-full transition-colors duration-300 ${
-                      isActive ? 'bg-rose-500 text-white shadow-sm' : 'text-[#0B2545]'
+                      isActive ? 'bg-[#DB5070] text-white shadow-sm' : 'text-[#0B2545]'
                     }`}>
                       {step.stepNumber}
                     </div>
@@ -213,7 +214,7 @@ export default function IvfTreatmentProcess({ data }) {
 
                     <div
                       className={`font-semibold text-[9.5px] leading-[1.15] text-center max-w-[90px] transition-colors duration-300 ${
-                        isActive ? 'text-rose-600 font-bold' : 'text-[#0B2545]'
+                        isActive ? 'text-[#DB5070] font-bold' : 'text-[#0B2545]'
                       }`}
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
@@ -229,10 +230,10 @@ export default function IvfTreatmentProcess({ data }) {
           {/* Mobile Active Step Description Display */}
           {selectedIndex !== null && (
             <div className="w-full text-center mt-4 px-4 transition-all duration-500">
-              <h3 className="text-rose-600 font-bold text-base mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h3 className="text-[#DB5070] font-bold text-base mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {data.steps[selectedIndex].title}
               </h3>
-              <div className="w-8 h-[2px] bg-rose-500 mx-auto mb-2 rounded-full"></div>
+              <div className="w-8 h-[2px] bg-[#DB5070] mx-auto mb-2 rounded-full"></div>
               <p className="text-gray-600 text-xs leading-relaxed max-w-xs mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {data.steps[selectedIndex].description}
               </p>
@@ -255,7 +256,7 @@ export default function IvfTreatmentProcess({ data }) {
               {data.steps.slice(0, -1).map((_, i) => (
                 <div key={i} className="flex justify-center items-center relative">
                   <div className={`w-3 h-3 rounded-full border-2 border-[#f4f7fb] shadow-sm absolute -top-[5px] transition-colors duration-300 ${
-                    selectedIndex !== null && i === selectedIndex ? 'bg-rose-500' : 'bg-[#152449]'
+                    selectedIndex !== null && i === selectedIndex ? 'bg-[#DB5070]' : 'bg-[#152449]'
                   }`}></div>
                 </div>
               ))}
@@ -276,19 +277,19 @@ export default function IvfTreatmentProcess({ data }) {
                   {/* Step Number Badge */}
                   <div className="flex flex-col items-center mb-3 h-12 justify-end z-10">
                     <div className={`w-10 h-10 min-w-[40px] min-h-[40px] rounded-full text-xs font-bold flex items-center justify-center shadow-md transition-all duration-300 ${
-                      isActive ? 'bg-rose-500 text-white scale-110 shadow-rose-200' : 'bg-[#152449] text-white'
+                      isActive ? 'bg-[#DB5070] text-white scale-110 shadow-[0_4px_14px_rgba(219,80,112,0.35)]' : 'bg-[#152449] text-white'
                     }`}>
                       {step.stepNumber}
                     </div>
                     <div className={`w-[2px] h-3 border-l-2 border-dotted mt-1 transition-colors duration-300 ${
-                      isActive ? 'border-rose-400' : 'border-gray-300'
+                      isActive ? 'border-[#DB5070]' : 'border-gray-300'
                     }`}></div>
                   </div>
 
                   {/* Main Circular Icon Card */}
                   <div className="relative flex items-center justify-center z-20">
                     <div className={`w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] border flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
-                      isActive ? 'border-rose-400 shadow-[0_8px_30px_rgba(236,72,153,0.2)] ring-4 ring-rose-50' : 'border-gray-100'
+                      isActive ? 'border-[#DB5070] shadow-[0_8px_30px_rgba(219,80,112,0.2)] ring-4 ring-[#DB5070]/10' : 'border-gray-100'
                     }`}>
                       <img 
                         src={assetUrl(isActive && step.activeIcon ? step.activeIcon : step.icon)} 
@@ -302,7 +303,7 @@ export default function IvfTreatmentProcess({ data }) {
                   <div className="mt-4 text-center w-full z-10 flex flex-col items-center">
                     <h3 
                       className={`font-bold text-xs md:text-[13px] leading-snug mb-2 transition-colors duration-300 min-h-[36px] flex items-center justify-center ${
-                        isActive ? 'text-rose-600 font-extrabold' : 'text-[#152449]'
+                        isActive ? 'text-[#DB5070] font-extrabold' : 'text-[#152449]'
                       }`}
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
@@ -310,7 +311,7 @@ export default function IvfTreatmentProcess({ data }) {
                     </h3>
                     
                     <div className={`w-5 h-[2px] mx-auto rounded-full transition-all duration-300 mb-2 ${
-                      isActive ? 'bg-rose-500 w-8' : 'bg-gray-300'
+                      isActive ? 'bg-[#DB5070] w-8' : 'bg-gray-300'
                     }`}></div>
 
                     {/* Smooth fading and sliding description */}

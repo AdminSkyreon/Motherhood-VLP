@@ -28,45 +28,45 @@ export default function HeroSection({ header, heroForm }) {
   if (!heroForm) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col pt-20 md:pt-24" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+    <div className="min-h-screen bg-gray-50 flex flex-col pt-20 md:pt-24 overflow-x-hidden" style={{ fontFamily: 'Montserrat, sans-serif' }}>
       {/* Header */}
-      <header className="w-full bg-white shadow-sm py-3 px-6 md:px-12 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
+      <header className="w-full bg-white shadow-sm py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center fixed top-0 left-0 right-0 z-50 box-border">
         <div className="flex items-center">
           <img 
             src={assetUrl(header?.logoImg)} 
             alt={header?.logoAlt} 
-            className="h-10 md:h-12 object-contain"
+            className="h-8 sm:h-10 md:h-12 object-contain"
           />
         </div>
         <div>
           <a 
             href={`tel:${header?.phoneNumber}`}
-            className="bg-[#DB5070] hover:bg-[#c2425e] text-white font-bold px-6 py-2.5 rounded-full flex items-center gap-2 text-base md:text-lg shadow-[0_8px_20px_rgba(219,80,112,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            className="bg-[#DB5070] hover:bg-[#c2425e] text-white font-bold px-4 sm:px-6 py-2 md:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base md:text-lg shadow-[0_8px_20px_rgba(219,80,112,0.35)] hover:-translate-y-0.5 transition-all duration-200"
           >
-            <Phone size={20} strokeWidth={2.5} /> 
+            <Phone size={18} className="sm:w-5 sm:h-5" strokeWidth={2.5} /> 
             <span>{header?.phoneNumber}</span>
           </a>
         </div>
       </header>
 
       {/* Hero Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 md:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full box-border">
         
         {/* Left Side: Video Player with Pink Glass Glow/Shadow */}
-        <div className="lg:col-span-7 bg-black rounded-3xl overflow-hidden aspect-video lg:aspect-auto lg:h-full relative flex items-center justify-center border border-pink-100 shadow-[0_10px_35px_rgba(219,80,112,0.18)]">
+        <div className="lg:col-span-7 bg-black rounded-3xl overflow-hidden aspect-video lg:aspect-auto lg:h-full relative flex items-center justify-center border border-pink-100 shadow-[0_10px_35px_rgba(219,80,112,0.18)] w-full mx-auto">
           <VideoPlayer src={hlsVideoSrc} />
         </div>
 
         {/* Right Side: Form / Thank You Message */}
-        <div className="lg:col-span-5 flex flex-col justify-between">
+        <div className="lg:col-span-5 flex flex-col justify-between w-full mx-auto">
           {/* Form Title */}
-          <h2 className="font-bold text-[#231F20] mb-3 text-center leading-tight text-[22px] md:text-[25px]">
-            <span className="block whitespace-nowrap">{heroForm.titlePart1}</span>
+          <h2 className="font-bold text-[#231F20] mb-3 text-center leading-tight text-[20px] sm:text-[22px] md:text-[25px]">
+            <span className="block whitespace-normal sm:whitespace-nowrap">{heroForm.titlePart1}</span>
             <span className="block">{heroForm.titlePart2}</span>
           </h2>
 
           {/* Form Container with Blue Glass Glow/Shadow effect */}
-          <div className="bg-white p-5 rounded-3xl border border-pink-200 flex-1 flex flex-col justify-center items-center shadow-[0_10px_35px_rgba(59,130,246,0.12)]">
+          <div className="bg-white p-4 sm:p-5 rounded-3xl border border-pink-200 flex-1 flex flex-col justify-center items-center shadow-[0_10px_35px_rgba(59,130,246,0.12)] w-full">
             {isSubmitted ? (
               // Show Thank You Message from JSON
               <div className="w-full text-center py-12 px-4 bg-green-50 rounded-2xl border border-green-200">
@@ -147,7 +147,7 @@ export default function HeroSection({ header, heroForm }) {
                 {/* Submit Button */}
                 <button 
                   type="submit"
-                  className="w-full bg-[#DB5070] hover:bg-[#c2425e] text-white font-semibold py-2.5 rounded-full shadow-lg transition-all mt-1 text-sm md:text-base"
+                  className="w-full bg-[#DB5070] hover:bg-[#c2425e] text-white font-semibold py-2.5 rounded-full shadow-lg transition-all mt-1 text-sm md:text-base cursor-pointer"
                 >
                   {heroForm.buttonText}
                 </button>
