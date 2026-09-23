@@ -38,11 +38,11 @@ export default function IvfTreatmentFaqs({ data }) {
   };
 
   return (
-    <section className="w-full pt-0 pb-6 md:pb-8 px-4 bg-[#f4f7fb] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
+    <section className="w-full pt-0 pb-6 md:pb-8 px-4 bg-[#f4f7fb] relative overflow-x-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col items-center w-full">
         
         {/* Section Heading with tighter margin */}
-        <div className="text-center mb-3">
+        <div className="text-center mb-3 w-full">
           <h2 
             className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#111111] tracking-tight leading-tight" 
             style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -51,7 +51,7 @@ export default function IvfTreatmentFaqs({ data }) {
           </h2>
         </div>
 
-        {/* FAQs Grid Layout (2 Columns with tight gap and items-start to prevent card stretching issues) */}
+        {/* FAQs Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 w-full max-w-6xl items-start">
           {data.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -60,7 +60,7 @@ export default function IvfTreatmentFaqs({ data }) {
               <div 
                 key={index}
                 onClick={() => toggleAccordion(index)}
-                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer bg-white ${
+                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer bg-white w-full ${
                   isOpen 
                     ? 'border-[#DB5070]/50 shadow-[0_12px_30px_rgba(219,80,112,0.12)]' 
                     : 'border-gray-100 hover:border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_25px_rgba(0,0,0,0.06)]'
@@ -71,10 +71,9 @@ export default function IvfTreatmentFaqs({ data }) {
                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#DB5070] z-10" />
                 )}
 
-                {/* FAQ Header Card (Question Area - Always White) */}
+                {/* FAQ Header Card */}
                 <div className="flex items-center justify-between py-4 px-4 md:px-5 bg-white gap-3">
                   <div className="flex items-center space-x-3.5 min-w-0 flex-1">
-                    {/* Main Icon Container - Changes background when open */}
                     <div 
                       className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
                       style={{ backgroundColor: isOpen ? '#FFE4E9' : '#DCF2FD' }}
@@ -82,7 +81,6 @@ export default function IvfTreatmentFaqs({ data }) {
                       {getFaqIcon(index, isOpen)}
                     </div>
 
-                    {/* Question Title with proper wrapping */}
                     <h3 
                       className="font-bold text-sm md:text-base text-[#111111] leading-snug break-words" 
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -91,7 +89,6 @@ export default function IvfTreatmentFaqs({ data }) {
                     </h3>
                   </div>
 
-                  {/* Toggle Button (+ / -) */}
                   <div 
                     className={`w-7 h-7 rounded-full flex items-center justify-center text-base font-light transition-all duration-300 flex-shrink-0 ${
                       isOpen ? 'bg-[#FFF4F8] text-[#DB5070] border border-[#DB5070]/30 rotate-180' : 'bg-[#DCF2FD] text-[#152449]'

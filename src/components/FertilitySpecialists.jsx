@@ -17,7 +17,7 @@ export default function FertilitySpecialists({ data }) {
   }
 
   return (
-    <section className="w-full pt-0 pb-6 my-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-sky-50/50 backdrop-blur-md border-b border-blue-100/60 shadow-sm relative">
+    <section className="w-full pt-0 pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 border-b border-blue-100/60 shadow-sm relative overflow-x-hidden">
       <div className="max-w-4xl mx-auto px-4 pt-1 flex flex-col items-center">
         
         {/* Section Title */}

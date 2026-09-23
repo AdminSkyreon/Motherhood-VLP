@@ -35,7 +35,7 @@ export default function BestIvfHospital({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-0 pb-12 md:pb-16 my-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-sky-50/50 backdrop-blur-md shadow-sm relative overflow-hidden"
+      className="w-full pt-0 pb-12 md:pb-16 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 shadow-sm relative overflow-x-hidden"
     >
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
         
@@ -50,13 +50,13 @@ export default function BestIvfHospital({ data }) {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center justify-center">
           
           {/* Left Side: Features Stack */}
-          <div className={`lg:col-span-5 flex flex-col gap-2.5 transition-all duration-1000 transform ${
+          <div className={`lg:col-span-5 w-full flex flex-col gap-2.5 transition-all duration-1000 transform ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
             {data.features.map((item, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl px-3.5 py-3 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgba(219,80,112,0.1)] transition-all duration-300 flex items-center gap-3.5 group hover:-translate-y-0.5 max-w-lg"
+                className="bg-white rounded-xl px-3.5 py-3 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgba(219,80,112,0.1)] transition-all duration-300 flex items-center gap-3.5 group hover:-translate-y-0.5 w-full max-w-lg"
               >
                 {/* Icon Wrapper with clean zoom effect */}
                 <div className="shrink-0 flex items-center justify-center">
@@ -94,11 +94,11 @@ export default function BestIvfHospital({ data }) {
             ))}
           </div>
 
-          {/* Right Side: Overview Description Box (Square-ish & Balanced) */}
-          <div className={`lg:col-span-7 transition-all duration-1000 delay-200 transform ${
+          {/* Right Side: Overview Description Box (Original Size Restored) */}
+          <div className={`lg:col-span-7 w-full transition-all duration-1000 delay-200 transform ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-[0_10px_35px_rgba(0,0,0,0.05)] flex flex-col justify-center space-y-4 max-w-xl">
+            <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-[0_10px_35px_rgba(0,0,0,0.05)] flex flex-col justify-center space-y-4 w-full max-w-xl">
               {data.overviewParagraphs.map((para, index) => (
                 <p 
                   key={index} 

@@ -28,7 +28,6 @@ export default function IvfRecommended({ data }) {
     };
   }, []);
 
-  // Agar JSON mein data ya items nahi hain, toh section render nahi hoga
   if (!data || !data.items || data.items.length === 0) {
     return null;
   }
@@ -40,9 +39,9 @@ export default function IvfRecommended({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-12 pb-16 md:pb-20 relative overflow-hidden bg-[#f4f7fb]"
+      className="w-full pt-12 pb-16 md:pb-20 relative overflow-x-hidden bg-[#f4f7fb]"
     >
-      <div className="max-w-6xl mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-4 relative z-10 flex flex-col items-center w-full">
         
         {/* Section Title */}
         <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-[#111111] text-center mb-10 md:mb-12 leading-tight transition-all duration-700 transform ${
@@ -53,7 +52,7 @@ export default function IvfRecommended({ data }) {
         </h2>
 
         {/* Grid Container */}
-        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 justify-items-center">
           {data.items.map((item, index) => {
             const isActive = activeCard === index;
 
@@ -61,7 +60,7 @@ export default function IvfRecommended({ data }) {
               <div 
                 key={index}
                 onClick={() => handleCardClick(index)}
-                className={`cursor-pointer rounded-2xl shadow-[0_6px_22px_rgba(0,0,0,0.04)] border transition-all duration-300 flex flex-col md:flex-row items-center p-4 md:px-5 md:py-5 group transform text-center md:text-left relative ${
+                className={`w-full cursor-pointer rounded-2xl shadow-[0_6px_22px_rgba(0,0,0,0.04)] border transition-all duration-300 flex flex-col md:flex-row items-center p-4 md:px-5 md:py-5 group transform text-center md:text-left relative ${
                   isActive 
                     ? 'bg-[#EAA0B4] border-[#EAA0B4] shadow-lg' 
                     : 'bg-white border-gray-100 hover:shadow-[0_10px_28px_rgba(219,80,112,0.1)]'
@@ -70,7 +69,7 @@ export default function IvfRecommended({ data }) {
                 }`}
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
-                {/* Icon Wrapper with Overflow effect */}
+                {/* Icon Wrapper */}
                 <div className={`w-14 h-14 md:w-18 md:h-18 rounded-full flex items-center justify-center flex-shrink-0 mb-3 md:mb-0 md:mr-4 transition-transform duration-300 group-hover:scale-110 z-10 ${
                   isActive ? 'bg-transparent border-0' : 'bg-pink-50/80 border border-pink-100/60 shadow-inner'
                 }`}>
@@ -84,7 +83,7 @@ export default function IvfRecommended({ data }) {
                 </div>
 
                 {/* Text Content */}
-                <div className="flex-1">
+                <div className="flex-1 w-full">
                   <h3 
                     className={`font-bold leading-snug text-xs md:text-[15px] transition-colors duration-300 ${
                       isActive ? 'text-white' : 'text-[#152449]'

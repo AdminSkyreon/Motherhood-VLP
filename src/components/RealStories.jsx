@@ -14,11 +14,11 @@ export default function RealStories({ data }) {
   const marqueeItems = [...data.testimonials, ...data.testimonials, ...data.testimonials];
 
   return (
-    <section className="w-full py-4 md:py-6 px-4 bg-[#f4f7fb] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col">
+    <section className="w-full py-4 md:py-6 px-4 bg-[#f4f7fb] relative overflow-x-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col items-center w-full">
         
         {/* ================= HEADER SECTION ================= */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-3 lg:mb-6 gap-3 lg:gap-6 items-center text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-3 lg:mb-6 gap-3 lg:gap-6 items-center text-center lg:text-left w-full">
           
           {/* Main Title */}
           <div className="w-full lg:w-auto pl-0 lg:pl-14">
@@ -31,8 +31,8 @@ export default function RealStories({ data }) {
             </h2>
           </div>
 
-          {/* Rating Badges (Google & Practo) - Dynamic from City JSON prop */}
-          <div className="flex flex-row items-center justify-center lg:justify-end gap-2.5 sm:gap-4 w-full max-w-[350px] sm:max-w-md lg:w-auto mx-auto lg:mx-0 px-1 lg:pr-14">
+          {/* Rating Badges (Google & Practo) */}
+          <div className="flex flex-row items-center justify-center lg:justify-end gap-2.5 sm:gap-4 w-full max-w-full sm:max-w-md lg:w-auto mx-auto lg:mx-0 px-1 lg:pr-14">
             
             {/* Google Badge */}
             {data.ratings?.google && (
@@ -92,7 +92,6 @@ export default function RealStories({ data }) {
         {/* ================= TESTIMONIALS CARDS MARQUEE ================= */}
         <div className="relative w-full overflow-hidden">
           
-          {/* Speed ko 35s set kiya hai taaki smooth chale */}
           <style dangerouslySetInnerHTML={{ __html: `
             @keyframes marqueeScroll {
               0% { transform: translateX(0); }
