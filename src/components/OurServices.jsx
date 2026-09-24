@@ -39,7 +39,7 @@ export default function OurServices({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-4 pb-16 md:pb-20 relative overflow-x-hidden bg-cover bg-center bg-fixed"
+      className="w-full pt-4 pb-2 md:pb-3 relative overflow-x-hidden bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${assetUrl(data.backgroundImage)})` }}
     >
       {/* Light overlay */}
@@ -74,13 +74,13 @@ export default function OurServices({ data }) {
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {/* Pink Icon Circle Wrapper */}
-                <div className={`rounded-full bg-pink-50 flex items-center justify-center border border-pink-100 transition-transform duration-300 group-hover:scale-110 shadow-inner ${
-                  isLast ? `w-10 h-10 lg:w-12 lg:h-12 mr-4 lg:mr-0 lg:mb-2.5 flex-shrink-0 ${isActive ? 'mt-1 lg:mt-0' : ''}` : 'w-11 h-11 lg:w-12 lg:h-12 mb-2.5 flex-shrink-0'
+                <div className={`rounded-full bg-pink-50 flex items-center justify-center border border-pink-100 transition-transform duration-300 group-hover:scale-110 shadow-inner overflow-visible ${
+                  isLast ? `w-12 h-12 lg:w-14 lg:h-14 mr-4 lg:mr-0 lg:mb-2.5 flex-shrink-0 ${isActive ? 'mt-1 lg:mt-0' : ''}` : 'w-12 h-12 lg:w-14 lg:h-14 mb-2.5 flex-shrink-0'
                 }`}>
                   <img 
                     src={assetUrl(item.icon)} 
                     alt={item.title} 
-                    className="w-4.5 h-4.5 lg:w-6 lg:h-6 object-contain"
+                    className="w-12 h-12 lg:w-16 lg:h-16 object-contain max-w-none scale-125"
                   />
                 </div>
 

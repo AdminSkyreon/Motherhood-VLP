@@ -39,7 +39,7 @@ export default function IvfRecommended({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-12 pb-16 md:pb-20 relative overflow-x-hidden bg-[#f4f7fb]"
+      className="w-full pt-2 md:pt-4 pb-2 md:pb-4 relative overflow-x-hidden bg-[#f4f7fb]"
     >
       <div className="max-w-6xl mx-auto px-4 relative z-10 flex flex-col items-center w-full">
         
