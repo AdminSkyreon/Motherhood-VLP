@@ -28,7 +28,6 @@ export default function IvfTreatmentProcess({ data }) {
     };
   }, []);
 
-  // Agar JSON mein data ya steps nahi hain, toh section render nahi hoga
   if (!data || !data.steps || data.steps.length === 0) {
     return null;
   }
@@ -78,12 +77,12 @@ export default function IvfTreatmentProcess({ data }) {
         {/* =====================================================
             MOBILE VIEW: CIRCULAR GLASS-SLICE JOURNEY
         ===================================================== */}
-        <div className="lg:hidden w-full flex flex-col items-center pt-0 pb-2">
+        <div className="lg:hidden w-full flex flex-col items-center pt-2 pb-4 px-2">
           <div
             className="
               relative
-              w-[88vw]
-              max-w-[340px]
+              w-[84vw]
+              max-w-[320px]
               aspect-square
               rounded-full
               border
@@ -93,6 +92,7 @@ export default function IvfTreatmentProcess({ data }) {
               shadow-[0_10px_30px_rgba(0,0,0,0.04)]
               overflow-hidden
               mx-auto
+              my-2
             "
           >
             {/* Bluish-Glass Conic Gradient Slices */}
@@ -121,7 +121,7 @@ export default function IvfTreatmentProcess({ data }) {
               }}
             />
 
-            {/* Active Slice Highlight (Exact Slice Shape) */}
+            {/* Active Slice Highlight */}
             {selectedIndex !== null && (
               <div 
                 className="absolute inset-0 bg-[#DB5070]/10 pointer-events-none transition-all duration-300 z-10"
@@ -157,8 +157,8 @@ export default function IvfTreatmentProcess({ data }) {
             >
               <div className="text-[#DB5070] mb-0.5">
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -172,14 +172,14 @@ export default function IvfTreatmentProcess({ data }) {
                 </svg>
               </div>
               <span
-                className="text-[#0B2545] font-bold text-[9.5px] tracking-tight"
+                className="text-[#0B2545] font-bold text-[9px] tracking-tight text-center px-1"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 Your IVF Journey
               </span>
             </div>
 
-            {/* Mobile Steps mapped radially */}
+            {/* Mobile Steps mapped radially with safe translation */}
             {data.steps.map((step, index) => {
               const angle = index * (360 / data.steps.length);
               const formatted = formatTitle(step.title);
@@ -191,20 +191,20 @@ export default function IvfTreatmentProcess({ data }) {
                   onClick={() => setSelectedIndex(index)}
                   className="absolute left-1/2 top-1/2 w-[32%] h-[32%] z-20 cursor-pointer"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-106%)`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-104%)`,
                   }}
                 >
                   <div
-                    className="w-full h-full flex flex-col items-center justify-center text-center px-1 rounded-xl transition-all duration-300"
+                    className="w-full h-full flex flex-col items-center justify-center text-center px-2 rounded-xl transition-all duration-300"
                     style={{ transform: `rotate(${-angle}deg)` }}
                   >
-                    <div className={`font-bold text-[11px] leading-none mb-1 px-1.5 py-0.5 rounded-full transition-colors duration-300 ${
+                    <div className={`font-bold text-[10px] leading-none mb-0.5 px-1.5 py-0.5 rounded-full transition-colors duration-300 ${
                       isActive ? 'bg-[#DB5070] text-white shadow-sm' : 'text-[#0B2545]'
                     }`}>
                       {step.stepNumber}
                     </div>
 
-                    <div className="relative w-[22px] h-[22px] mb-1 flex items-center justify-center">
+                    <div className="relative w-[19px] h-[19px] mb-0.5 flex items-center justify-center">
                       <img
                         src={assetUrl(isActive && step.activeIcon ? step.activeIcon : step.icon)}
                         alt={step.title}
@@ -213,7 +213,7 @@ export default function IvfTreatmentProcess({ data }) {
                     </div>
 
                     <div
-                      className={`font-semibold text-[9.5px] leading-[1.15] text-center max-w-[90px] transition-colors duration-300 ${
+                      className={`font-semibold text-[8.5px] leading-[1.1] text-center max-w-[85px] transition-colors duration-300 ${
                         isActive ? 'text-[#DB5070] font-bold' : 'text-[#0B2545]'
                       }`}
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -229,11 +229,11 @@ export default function IvfTreatmentProcess({ data }) {
 
           {/* Mobile Active Step Description Display */}
           {selectedIndex !== null && (
-            <div className="w-full text-center mt-4 px-4 transition-all duration-500">
-              <h3 className="text-[#DB5070] font-bold text-base mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <div className="w-full text-center mt-3 px-4 transition-all duration-500">
+              <h3 className="text-[#DB5070] font-bold text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {data.steps[selectedIndex].title}
               </h3>
-              <div className="w-8 h-[2px] bg-[#DB5070] mx-auto mb-2 rounded-full"></div>
+              <div className="w-8 h-[2px] bg-[#DB5070] mx-auto mb-1.5 rounded-full"></div>
               <p className="text-gray-600 text-xs leading-relaxed max-w-xs mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {data.steps[selectedIndex].description}
               </p>
@@ -299,7 +299,7 @@ export default function IvfTreatmentProcess({ data }) {
                     </div>
                   </div>
 
-                  {/* Title, Dash & Smooth Animated Description Under Each Step */}
+                  {/* Title & Description */}
                   <div className="mt-4 text-center w-full z-10 flex flex-col items-center">
                     <h3 
                       className={`font-bold text-xs md:text-[13px] leading-snug mb-2 transition-colors duration-300 min-h-[36px] flex items-center justify-center ${
@@ -314,7 +314,6 @@ export default function IvfTreatmentProcess({ data }) {
                       isActive ? 'bg-[#DB5070] w-8' : 'bg-gray-300'
                     }`}></div>
 
-                    {/* Smooth fading and sliding description */}
                     <div className={`transition-all duration-500 ease-in-out overflow-hidden text-center w-full ${
                       isActive ? 'opacity-100 max-h-40 translate-y-0' : 'opacity-0 max-h-0 -translate-y-2 pointer-events-none'
                     }`}>
@@ -326,11 +325,9 @@ export default function IvfTreatmentProcess({ data }) {
                       </p>
                     </div>
                   </div>
-
                 </div>
               );
             })}
-
           </div>
         </div>
 
