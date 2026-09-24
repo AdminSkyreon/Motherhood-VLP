@@ -35,7 +35,7 @@ export default function BestIvfHospital({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-0 pb-12 md:pb-16 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 shadow-sm relative overflow-x-hidden"
+      className="w-full pt-0 pb-4 md:pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 shadow-sm relative overflow-x-hidden"
     >
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center">
         

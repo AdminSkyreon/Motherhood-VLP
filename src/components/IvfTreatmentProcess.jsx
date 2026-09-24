@@ -47,7 +47,7 @@ export default function IvfTreatmentProcess({ data }) {
   return (
     <section 
       ref={sectionRef} 
-      className="w-full pt-6 lg:pt-10 pb-4 lg:pb-6 relative z-30 overflow-x-hidden bg-[#f4f7fb]"
+      className="w-full pt-2 lg:pt-4 pb-2 lg:pb-4 relative z-30 overflow-x-hidden bg-[#f4f7fb]"
     >
       <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center w-full">
         
@@ -204,7 +204,8 @@ export default function IvfTreatmentProcess({ data }) {
                       {step.stepNumber}
                     </div>
 
-                    <div className="relative w-[19px] h-[19px] mb-0.5 flex items-center justify-center">
+                    {/* Yahan mobile view ke icon ka size w-7 h-7 (28px)  hai */}
+                    <div className="relative w-6 h-6 mb-0.5 flex items-center justify-center">
                       <img
                         src={assetUrl(isActive && step.activeIcon ? step.activeIcon : step.icon)}
                         alt={step.title}

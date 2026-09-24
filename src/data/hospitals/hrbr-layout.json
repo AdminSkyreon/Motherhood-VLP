@@ -9,7 +9,7 @@
       "enabled": true,
       "logoImg": "/motherhood-fertility-logo.png",
       "logoAlt": "Motherhood Fertility & IVF",
-      "phoneNumber": "080 6901 9060"
+      "phoneNumber": "080 69019060"
     },
     "heroForm": {
       "enabled": true,
@@ -402,7 +402,7 @@
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2201684127963!2d77.64863969999999!3d13.021646899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17e3105b77d1%3A0x6ad0e1377d235be2!2sMotherhood%20Fertility%20%26%20IVF%20Center%20-%20Best%20IVF%20Centre%20in%20HRBR%20Layout%2C%20Bangalore%20%7C%20Infertility%20Treatment!5e0!3m2!1sen!2sus!4v1789153600241!5m2!1sen!2sus",
       "callAction": {
         "text": "Call Now",
-        "phoneNumber": "+919876543210"
+        "phoneNumber": "080 69019060"
       },
       "bookAction": {
         "text": "Book Now",
@@ -413,7 +413,7 @@
       "enabled": true,
       "hospitalName": "Motherhood Fertility & IVF",
       "branch": "HRBR Layout, Kalyan Nagar",
-      "phone": "080 6901 9060",
+      "phone": "080 69019060",
       "links": {
         "privacyPolicy": "#",
         "terms": "#"
