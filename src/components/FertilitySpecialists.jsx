@@ -1,23 +1,44 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { GraduationCap, Stethoscope, MapPin, Calendar } from 'lucide-react';
 import { assetUrl } from '@/lib/assetUrl';
 
 export default function FertilitySpecialists({ data }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
+  const [showBookNow, setShowBookNow] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        if (rect.top <= windowHeight * 0.75) {
+          setShowBookNow(true);
+        } else {
+          setShowBookNow(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  // Agar JSON mein data ya items nahi hai, toh section render nahi hoga
   if (!data || !data.items || data.items.length === 0) {
     return null;
   }
 
   return (
-    <section className="w-full pt-0 pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 border-b border-blue-100/60 shadow-sm relative overflow-x-hidden">
+    <section ref={sectionRef} className="w-full pt-0 pb-28 md:pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 border-b border-blue-100/60 shadow-sm relative overflow-x-hidden">
       <div className="max-w-4xl mx-auto px-4 pt-1 flex flex-col items-center">
         
         {/* Section Title */}
@@ -143,11 +164,13 @@ export default function FertilitySpecialists({ data }) {
 
       </div>
 
-      {/* Vertical Fixed Sticky 'Book Now' Button on Right Side */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
+      {/* Vertical Fixed Sticky 'Book Now' Button - HIDDEN on Mobile, VISIBLE only on Desktop (lg+) */}
+      <div className={`hidden lg:block fixed right-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-300 transform ${
+        showBookNow ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-95 translate-x-10 pointer-events-none'
+      }`}>
         <button 
           onClick={() => {}}
-          className="bg-[#DB5070] hover:bg-[#c44463] text-white font-semibold py-3 px-2 rounded-l-xl shadow-[0_4px_20px_rgba(219,80,112,0.4)] [writing-mode:vertical-rl] tracking-widest text-xs uppercase transition-all duration-300"
+          className="bg-[#DB5070] hover:bg-[#c44463] text-white font-semibold py-3 px-2 rounded-l-xl shadow-[0_4px_20px_rgba(219,80,112,0.4)] [writing-mode:vertical-rl] tracking-widest text-xs uppercase transition-all duration-300 cursor-pointer"
         >
           Book Now
         </button>

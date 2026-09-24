@@ -79,7 +79,7 @@ export default function Location({ data }) {
               {/* Book Now Button */}
               <a
                 href={data.bookAction?.link}
-                className="flex-1 max-w-[160px] md:w-[140px] bg-[#DB5070] hover:bg-[#c24361] text-white font-bold py-3 px-3 rounded-full shadow-[0_4px_14px_rgba(219,80,112,0.35)] transition-all duration-300 flex items-center justify-center text-xs md:text-sm tracking-wide text-center"
+                className="flex-1 max-w-[160px] md:w-[140px] bg-[#0057A4] hover:bg-[#c24361] text-white font-bold py-3 px-3 rounded-full shadow-[0_4px_14px_rgba(219,80,112,0.35)] transition-all duration-300 flex items-center justify-center text-xs md:text-sm tracking-wide text-center"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 <span>{data.bookAction?.text}</span>
