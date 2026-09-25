@@ -33,6 +33,36 @@ export default function FertilitySpecialists({ data }) {
     };
   }, []);
 
+  // Shared Smooth Scroll Handler for Form Focus
+  const scrollToForm = (e) => {
+    if (e) e.preventDefault();
+    const fullNameInput = document.getElementById('fullNameInput');
+    
+    if (fullNameInput) {
+      const elementPosition = fullNameInput.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 120;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      setTimeout(() => {
+        fullNameInput.focus();
+        fullNameInput.classList.add('ring-4', 'ring-[#DB5070]', 'border-[#DB5070]', 'transition-all', 'duration-500');
+        
+        setTimeout(() => {
+          fullNameInput.classList.remove('ring-4', 'ring-[#DB5070]', 'border-[#DB5070]');
+        }, 2000);
+      }, 400);
+      
+    } else {
+      if (data?.bookAction?.link) {
+        window.location.href = data.bookAction.link;
+      }
+    }
+  };
+
   if (!data || !data.items || data.items.length === 0) {
     return null;
   }
@@ -58,9 +88,7 @@ export default function FertilitySpecialists({ data }) {
             return (
               <div 
                 key={index}
-                onTouchStart={() => setActiveCard(index)}
-                onTouchEnd={() => setActiveCard(null)}
-                onClick={() => setActiveCard(index)}
+                onClick={() => setActiveCard(activeCard === index ? null : index)}
                 className={`bg-white rounded-[24px] p-4 md:p-5 border border-gray-100 shadow-[0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(219,80,112,0.12)] transition-all duration-300 flex flex-col items-center text-center relative group hover:-translate-y-1 w-[280px] md:w-[320px] shrink-0 cursor-pointer select-none ${
                   isActive ? 'translate-y-1.5 shadow-[0_12px_30px_rgba(219,80,112,0.12)]' : ''
                 }`}
@@ -150,8 +178,9 @@ export default function FertilitySpecialists({ data }) {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
+                    scrollToForm(e);
                   }}
-                  className="w-full max-w-[280px] py-2 px-4 rounded-full bg-[#DB5070] hover:bg-[#c44463] text-white font-medium text-xs shadow-[0_4px_10px_rgba(219,80,112,0.3)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-1.5"
+                  className="w-full max-w-[280px] py-2 px-4 rounded-full bg-[#DB5070] hover:bg-[#c44463] text-white font-medium text-xs shadow-[0_4px_10px_rgba(219,80,112,0.3)] transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Calendar className="w-3.5 h-3.5" />
                   Book Appointment
@@ -169,7 +198,7 @@ export default function FertilitySpecialists({ data }) {
         showBookNow ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-95 translate-x-10 pointer-events-none'
       }`}>
         <button 
-          onClick={() => {}}
+          onClick={scrollToForm}
           className="bg-[#DB5070] hover:bg-[#c44463] text-white font-semibold py-3 px-2 rounded-l-xl shadow-[0_4px_20px_rgba(219,80,112,0.4)] [writing-mode:vertical-rl] tracking-widest text-xs uppercase transition-all duration-300 cursor-pointer"
         >
           Book Now
