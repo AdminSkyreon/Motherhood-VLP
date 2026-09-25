@@ -228,6 +228,7 @@ export default function HeroSection({ header, heroForm }) {
                   </label>
 
                   <input
+                    id="fullNameInput"
                     type="text"
                     placeholder={heroForm.fields.fullName}
                     value={formData.fullName}
