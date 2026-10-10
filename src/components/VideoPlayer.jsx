@@ -50,6 +50,7 @@ export default function VideoPlayer({ src, poster }) {
       if (video && !video.muted) {
         video.muted = true;
         setIsMuted(true);
+        video.currentTime = 0; 
       }
     };
 
@@ -96,8 +97,12 @@ export default function VideoPlayer({ src, poster }) {
 
     if (!video) return;
 
-    video.muted = !isMuted;
-    setIsMuted(!isMuted);
+    const newMutedState = !isMuted;
+    video.muted = newMutedState;
+    setIsMuted(newMutedState);
+
+    // Mute ya Unmute should be start from begining:
+    video.currentTime = 0;
   };
 
   return (

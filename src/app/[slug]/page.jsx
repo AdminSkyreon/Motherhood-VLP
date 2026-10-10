@@ -66,18 +66,41 @@ export default async function HospitalLocationPage({ params }) {
 
   return (
     <main className="min-h-screen text-gray-800">
-      {/* Passing both header and heroForm to HeroSection */}
+      {/* 1. VSL Video (HeroSection contains the video & form layout) */}
       {heroForm?.enabled && <HeroSection header={header} heroForm={heroForm} />}
+      
+      {/* 2. Contact Form (If rendered separately or integrated inside Hero/Form section as per layout) */}
+      
+      {/* 3. Special Benefits[cite: 6] */}
       {specialBenefits?.enabled && <SpecialBenefits data={specialBenefits} />}
+      
+      {/* 4. Doctors List[cite: 6] */}
       {doctors?.enabled && <FertilitySpecialists data={doctors} />}
-      {whyChooseUs?.enabled && <WhyChooseUs data={whyChooseUs} />}
-      {bestIvfHospital?.enabled && <BestIvfHospital data={bestIvfHospital} />}
+      
+      {/* 5. Our Services[cite: 6] */}
       {ourServices?.enabled && <OurServices data={ourServices} />}
-      {ivfRecommended?.enabled && <IvfRecommended data={ivfRecommended} />}
+      
+      {/* 6. IVF Treatment Process[cite: 6] */}
       {ivfProcess?.enabled && <IvfTreatmentProcess data={ivfProcess} />}
+      
+      {/* 7. IVF Couples Facing Issues (ivfRecommended)[cite: 6] */}
+      {ivfRecommended?.enabled && <IvfRecommended data={ivfRecommended} />}
+      
+      {/* 8. Best IVF Hospital in Bangalore[cite: 6] */}
+      {bestIvfHospital?.enabled && <BestIvfHospital data={bestIvfHospital} />}
+      
+      {/* 9. FAQ[cite: 6] */}
       {ivfFaqs?.enabled && <IvfTreatmentFaqs data={ivfFaqs} />}
+      
+      {/* 10. Why Choose Motherhood Fertility & IVF[cite: 6] */}
+      {whyChooseUs?.enabled && <WhyChooseUs data={whyChooseUs} />}
+      
+      {/* 11. Reviews (RealStories)[cite: 6] */}
       {realStories?.enabled && <RealStories data={realStories} />}
+      
+      {/* 12. Locations (Map & details)[cite: 6, 7] */}
       {location?.enabled && <Location data={location} />}
+      
       {footer?.enabled && <Footer data={footer} />}
     </main>
   );
