@@ -95,6 +95,7 @@ export default function HeroSection({ header, heroForm }) {
             className="sm:w-5 sm:h-5"
             strokeWidth={2.5}
           />
+
           <span>{header?.phoneNumber}</span>
         </a>
       </header>
@@ -161,7 +162,7 @@ export default function HeroSection({ header, heroForm }) {
             sm:px-0
           "
         >
-          {/* Form Title */}
+          {/* ================= FORM TITLE ================= */}
           <h2
             className="
               font-bold
@@ -177,12 +178,13 @@ export default function HeroSection({ header, heroForm }) {
             <span className="block">
               {heroForm.titlePart1}
             </span>
+
             <span className="block">
               {heroForm.titlePart2}
             </span>
           </h2>
 
-          {/* Form Container */}
+          {/* ================= FORM CONTAINER ================= */}
           <div
             className="
               bg-white
@@ -197,6 +199,8 @@ export default function HeroSection({ header, heroForm }) {
               justify-center
               shadow-[0_10px_35px_rgba(59,130,246,0.12)]
               w-full
+              lg:w-[65%]
+              lg:mx-auto
             "
           >
             {isSubmitted ? (

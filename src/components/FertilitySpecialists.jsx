@@ -8,9 +8,18 @@ export default function FertilitySpecialists({ data }) {
   const [activeCard, setActiveCard] = useState(null);
   const [showBookNow, setShowBookNow] = useState(false);
   const sectionRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
 
     const handleScroll = () => {
       if (sectionRef.current) {
@@ -29,9 +38,37 @@ export default function FertilitySpecialists({ data }) {
     handleScroll();
 
     return () => {
+      window.removeEventListener('resize', checkScreen);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Continuous Seamless Auto-Move Effect for Mobile Only
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let animationFrameId;
+    const speed = 0.8;
+
+    const scrollStep = () => {
+      if (window.innerWidth < 768 && !isPaused) {
+        container.scrollLeft += speed;
+
+        const maxScrollLeft = container.scrollWidth / 2;
+        if (container.scrollLeft >= maxScrollLeft) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scrollStep);
+    };
+
+    animationFrameId = requestAnimationFrame(scrollStep);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isPaused]);
 
   // Shared Smooth Scroll Handler for Form Focus
   const scrollToForm = (e) => {
@@ -67,6 +104,9 @@ export default function FertilitySpecialists({ data }) {
     return null;
   }
 
+  // Desktop par sirf original items rahenge, mobile par infinite loop ke liye duplicate honge
+  const displayItems = isMobile ? [...data.items, ...data.items] : data.items;
+
   return (
     <section ref={sectionRef} className="w-full pt-0 pb-4 md:pb-6 my-0 bg-[#F0F5FA] md:bg-gradient-to-br md:from-blue-50/70 md:via-indigo-50/40 md:to-sky-50/50 border-b border-blue-100/60 shadow-sm relative overflow-x-hidden">
       <div className="max-w-4xl mx-auto px-4 pt-1 flex flex-col items-center">
@@ -79,16 +119,25 @@ export default function FertilitySpecialists({ data }) {
         </h2>
 
         {/* Doctor Cards Container */}
-        <div className={`w-full flex md:flex-wrap flex-nowrap overflow-x-auto md:overflow-visible justify-start md:justify-center items-start gap-4 pb-4 md:pb-0 px-2 scrollbar-thin transition-all duration-1000 transform ${
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          {data.items.map((doc, index) => {
-            const isActive = activeCard === index;
+        <div 
+          ref={scrollContainerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className={`w-full flex md:flex-wrap flex-nowrap overflow-x-auto md:overflow-visible justify-start md:justify-center items-start gap-4 pb-4 md:pb-0 px-2 scrollbar-thin transition-all duration-1000 transform ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {displayItems.map((doc, index) => {
+            const originalIndex = index % data.items.length;
+            const isActive = activeCard === originalIndex;
 
             return (
               <div 
                 key={index}
-                onClick={() => setActiveCard(activeCard === index ? null : index)}
+                onClick={() => setActiveCard(activeCard === originalIndex ? null : originalIndex)}
                 className={`bg-white rounded-[24px] p-4 md:p-5 border border-gray-100 shadow-[0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(219,80,112,0.12)] transition-all duration-300 flex flex-col items-center text-center relative group hover:-translate-y-1 w-[280px] md:w-[320px] shrink-0 cursor-pointer select-none ${
                   isActive ? 'translate-y-1.5 shadow-[0_12px_30px_rgba(219,80,112,0.12)]' : ''
                 }`}

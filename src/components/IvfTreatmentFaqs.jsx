@@ -13,30 +13,6 @@ export default function IvfTreatmentFaqs({ data }) {
     return null;
   }
 
-  // Helper function to generate SVG icons with dynamic color based on open state
-  const getFaqIcon = (index, isOpen) => {
-    const color = isOpen ? '#DB5070' : '#152449';
-    const icons = [
-      // 1. Target / Cycles
-      <svg key="1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
-      // 2. Bed / Rest
-      <svg key="2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>,
-      // 3. Lab / Test Tube
-      <svg key="3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M9 3h6M10 9h4M10 3v6a4 4 0 0 0-4 4v1a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-1a4 4 0 0 0-4-4V3"/></svg>,
-      // 4. User / Working Women
-      <svg key="4" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-      // 5. Success / Chart
-      <svg key="5" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>,
-      // 6. Shield / Side Effects
-      <svg key="6" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-      // 7. Cost / Rupee symbol
-      <svg key="7" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M6 3h12M6 8h12M6 13h7a4 4 0 0 1 0 8H6M10 13l6 8"/></svg>,
-      // 8. Natural / Message Bubble
-      <svg key="8" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    ];
-    return icons[index % icons.length];
-  };
-
   return (
     <section className="w-full pt-0 pb-6 md:pb-8 px-4 bg-[#f4f7fb] relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center w-full">
@@ -73,14 +49,7 @@ export default function IvfTreatmentFaqs({ data }) {
 
                 {/* FAQ Header Card */}
                 <div className="flex items-center justify-between py-4 px-4 md:px-5 bg-white gap-3">
-                  <div className="flex items-center space-x-3.5 min-w-0 flex-1">
-                    <div 
-                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-                      style={{ backgroundColor: isOpen ? '#FFE4E9' : '#DCF2FD' }}
-                    >
-                      {getFaqIcon(index, isOpen)}
-                    </div>
-
+                  <div className="flex items-center min-w-0 flex-1">
                     <h3 
                       className="font-bold text-sm md:text-base text-[#111111] leading-snug break-words" 
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -100,12 +69,12 @@ export default function IvfTreatmentFaqs({ data }) {
 
                 {/* Smooth Expandable Answer Section */}
                 <div 
-                  className={`transition-all duration-300 ease-in-out overflow-hidden px-4 md:px-5 border-t ${
-                    isOpen ? 'max-h-64 pb-4 opacity-100 border-[#FFF4F8]' : 'max-h-0 pb-0 opacity-0 border-transparent'
+                  className={`transition-all duration-500 ease-in-out overflow-hidden px-4 md:px-5 border-t ${
+                    isOpen ? 'max-h-[500px] pb-4 opacity-100 border-[#FFF4F8]' : 'max-h-0 pb-0 opacity-0 border-transparent'
                   }`}
                   style={{ backgroundColor: isOpen ? '#FFF4F8' : '#ffffff' }}
                 >
-                  <div className="pl-[45px] pt-2">
+                  <div className="pt-2">
                     <p 
                       className="text-gray-600 text-xs md:text-sm leading-relaxed break-words" 
                       style={{ fontFamily: 'Montserrat, sans-serif' }}

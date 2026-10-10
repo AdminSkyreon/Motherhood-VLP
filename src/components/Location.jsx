@@ -3,36 +3,24 @@ import React from 'react';
 import { assetUrl } from '@/lib/assetUrl';
 
 export default function Location({ data }) {
-  if (!data) {
-    return null;
-  }
+  if (!data) return null;
 
   const handleBookNowClick = (e) => {
     e.preventDefault();
     const fullNameInput = document.getElementById('fullNameInput');
-    
     if (fullNameInput) {
       const elementPosition = fullNameInput.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - 120;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       setTimeout(() => {
         fullNameInput.focus();
         fullNameInput.classList.add('ring-4', 'ring-[#DB5070]', 'border-[#DB5070]', 'transition-all', 'duration-500');
-        
         setTimeout(() => {
           fullNameInput.classList.remove('ring-4', 'ring-[#DB5070]', 'border-[#DB5070]');
         }, 2000);
       }, 400);
-      
-    } else {
-      if (data.bookAction?.link) {
-        window.location.href = data.bookAction.link;
-      }
+    } else if (data.bookAction?.link) {
+      window.location.href = data.bookAction.link;
     }
   };
 
@@ -51,6 +39,7 @@ export default function Location({ data }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl items-start mx-auto">
           
+          {/* Left Column: Building Image */}
           <div className="flex flex-col items-center w-full">
             <div className="w-full h-[240px] md:h-[280px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] bg-white border border-gray-100">
               <img 
@@ -70,10 +59,11 @@ export default function Location({ data }) {
             </div>
           </div>
 
+          {/* Right Column: Real Google Maps Embed Iframe */}
           <div className="flex flex-col items-center w-full">
             <div className="w-full h-[240px] md:h-[280px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] bg-white border border-gray-100 relative">
               <iframe
-                title="Google Map Location"
+                title="Google Map Locations"
                 src={assetUrl(data.mapEmbedUrl)}
                 width="100%"
                 height="100%"
@@ -85,6 +75,7 @@ export default function Location({ data }) {
               ></iframe>
             </div>
 
+            {/* Call & Book Buttons */}
             <div className="mt-4 flex items-center justify-center gap-3 w-full">
               <a
                 href={`tel:${data.callAction?.phoneNumber}`}
