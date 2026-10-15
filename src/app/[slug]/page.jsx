@@ -2,18 +2,18 @@ import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 
-import HeroSection from '@/components/HeroSection';
-import SpecialBenefits from '@/components/SpecialBenefits';
-import FertilitySpecialists from '@/components/FertilitySpecialists';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import BestIvfHospital from '@/components/BestIvfHospital';
-import OurServices from '@/components/OurServices';
-import IvfRecommended from '@/components/IvfRecommended';
-import IvfTreatmentProcess from '@/components/IvfTreatmentProcess';
-import IvfTreatmentFaqs from '@/components/IvfTreatmentFaqs';
-import RealStories from '@/components/RealStories';
-import Location from '@/components/Location';
-import Footer from '@/components/Footer';
+import HeroSection from '../../components/HeroSection';
+import SpecialBenefits from '../../components/SpecialBenefits';
+import FertilitySpecialists from '../../components/FertilitySpecialists';
+import WhyChooseUs from '../../components/WhyChooseUs';
+import BestIvfHospital from '../../components/BestIvfHospital';
+import OurServices from '../../components/OurServices';
+import IvfRecommended from '../../components/IvfRecommended';
+import IvfTreatmentProcess from '../../components/IvfTreatmentProcess';
+import IvfTreatmentFaqs from '../../components/IvfTreatmentFaqs';
+import RealStories from '../../components/RealStories';
+import Location from '../../components/Location';
+import Footer from '../../components/Footer';
 
 export async function generateStaticParams() {
   try {
@@ -66,41 +66,40 @@ export default async function HospitalLocationPage({ params }) {
 
   return (
     <main className="min-h-screen text-gray-800">
-      {/* 1. VSL Video (HeroSection contains the video & form layout) */}
+      {/* 1. Hero Section & Form */}
       {heroForm?.enabled && <HeroSection header={header} heroForm={heroForm} />}
       
-      {/* 2. Contact Form (If rendered separately or integrated inside Hero/Form section as per layout) */}
-      
-      {/* 3. Special Benefits[cite: 6] */}
+      {/* 2. Special Benefits */}
       {specialBenefits?.enabled && <SpecialBenefits data={specialBenefits} />}
       
-      {/* 4. Doctors List[cite: 6] */}
+      {/* 3. Doctors List */}
       {doctors?.enabled && <FertilitySpecialists data={doctors} />}
       
-      {/* 5. Our Services[cite: 6] */}
+      {/* 4. Our Services */}
       {ourServices?.enabled && <OurServices data={ourServices} />}
       
-      {/* 6. IVF Treatment Process[cite: 6] */}
+      {/* 5. IVF Treatment Process */}
       {ivfProcess?.enabled && <IvfTreatmentProcess data={ivfProcess} />}
       
-      {/* 7. IVF Couples Facing Issues (ivfRecommended)[cite: 6] */}
+      {/* 6. IVF Couples Facing Issues */}
       {ivfRecommended?.enabled && <IvfRecommended data={ivfRecommended} />}
       
-      {/* 8. Best IVF Hospital in Bangalore[cite: 6] */}
+      {/* 7. Best IVF Hospital */}
       {bestIvfHospital?.enabled && <BestIvfHospital data={bestIvfHospital} />}
       
-      {/* 9. FAQ[cite: 6] */}
+      {/* 8. FAQ */}
       {ivfFaqs?.enabled && <IvfTreatmentFaqs data={ivfFaqs} />}
       
-      {/* 10. Why Choose Motherhood Fertility & IVF[cite: 6] */}
+      {/* 9. Why Choose Us */}
       {whyChooseUs?.enabled && <WhyChooseUs data={whyChooseUs} />}
       
-      {/* 11. Reviews (RealStories)[cite: 6] */}
+      {/* 10. Reviews (RealStories) */}
       {realStories?.enabled && <RealStories data={realStories} />}
       
-      {/* 12. Locations (Map & details)[cite: 6, 7] */}
+      {/* 11. Locations */}
       {location?.enabled && <Location data={location} />}
       
+      {/* 12. Footer */}
       {footer?.enabled && <Footer data={footer} />}
     </main>
   );

@@ -111,7 +111,7 @@
     },
     "bestIvfHospital": {
       "enabled": true,
-      "sectionTitle": "Best IVF Hospital in HRBR Layout, Bangalore",
+      "sectionTitle": "Best IVF Hospital in, Bangalore",
       "features": [
         {
           "icon": "/images/ivf-treatment-icon.png",
@@ -135,7 +135,7 @@
         }
       ],
       "overviewParagraphs": [
-        "Motherhood Fertility & IVF is one of the best IVF hospitals in HRBR Layout, Bangalore, known for advanced IVF treatment, experienced IVF expert doctors, and high success rates. We provide comprehensive fertility care including IVF, IUI, ICSI, and personalised infertility treatment plans.",
+        "Motherhood Fertility & IVF is one of the best IVF hospitals in, Bangalore, known for advanced IVF treatment, experienced IVF expert doctors, and high success rates. We provide comprehensive fertility care including IVF, IUI, ICSI, and personalised infertility treatment plans.",
         "Our team of leading fertility & IVF specialists uses state-of-the-art technology to treat all female infertility issues with precision and care. With a patient-focused approach and proven results, we help couples achieve their dream of parenthood."
       ]
     },
@@ -430,5 +430,14 @@
         "terms": "#"
       }
     }
+  },
+  "lead": {
+    "hospitalId": "progressive",
+    "source": "landing-page-vlp-progressive",
+    "unitnameC": "Motherhood - Bangalore VLP",
+    "enquirySource": "Google",
+    "formEnquiryType": "Campaign",
+    "formEnquirySubtype": "VLP",
+    "formCampaignName": "MHVLP | Google Search | VLP | Progressive | Bangalore | Free First Consultation"
   }
 }
