@@ -14,11 +14,56 @@ export default function HeroSection({ header, heroForm }) {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data Submitted:', formData);
-    setIsSubmitted(true);
+    setErrorMessage('');
+
+    // 1. Phone Number Validation
+    const cleanPhone = formData.phone.trim();
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(cleanPhone)) {
+      setErrorMessage('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // 2. API Call 
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          language: formData.language,
+          phone: cleanPhone,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Lead submission failed');
+      }
+
+      // 3. Trigger Analytics / DataLayer event
+      if (typeof window !== 'undefined' && window.dataLayer) {
+        window.dataLayer.push({
+          event: 'form_submit',
+          form_name: 'Hero Lead Form',
+        });
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Submission Error:', error);
+      setErrorMessage('Submission failed. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const hlsVideoSrc = assetUrl('/playlist.m3u8');
@@ -225,6 +270,13 @@ export default function HeroSection({ header, heroForm }) {
                 onSubmit={handleSubmit}
                 className="space-y-2.5 w-full"
               >
+                {/* Error Message Display */}
+                {errorMessage && (
+                  <div className="p-2 bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg text-center">
+                    {errorMessage}
+                  </div>
+                )}
+
                 {/* ================= FULL NAME ================= */}
                 <div>
                   <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
@@ -254,9 +306,9 @@ export default function HeroSection({ header, heroForm }) {
                       focus:outline-none
                       focus:ring-1
                       focus:ring-[#DB5070]
-                      text-[#7AA2E3]
+                      text-gray-800
                       text-sm
-                      placeholder:text-[#7AA2E3]
+                      placeholder:text-gray-400
                     "
                   />
                 </div>
@@ -336,12 +388,13 @@ export default function HeroSection({ header, heroForm }) {
 
                     <input
                       type="tel"
+                      maxLength={10}
                       placeholder={heroForm.fields.phone}
                       value={formData.phone}
                       onChange={(e) =>
                         setFormData({
                           ...formData,
-                          phone: e.target.value,
+                          phone: e.target.value.replace(/\D/g, ''),
                         })
                       }
                       required
@@ -351,9 +404,9 @@ export default function HeroSection({ header, heroForm }) {
                         py-2
                         bg-white
                         focus:outline-none
-                        text-[#7AA2E3]
+                        text-gray-800
                         text-sm
-                        placeholder:text-[#7AA2E3]
+                        placeholder:text-gray-400
                       "
                     />
                   </div>
@@ -392,6 +445,7 @@ export default function HeroSection({ header, heroForm }) {
                 {/* ================= SUBMIT ================= */}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="
                     w-full
                     bg-[#DB5070]
@@ -406,9 +460,10 @@ export default function HeroSection({ header, heroForm }) {
                     text-sm
                     md:text-base
                     cursor-pointer
+                    disabled:opacity-50
                   "
                 >
-                  {heroForm.buttonText}
+                  {isSubmitting ? 'Submitting...' : heroForm.buttonText}
                 </button>
               </form>
             )}
