@@ -1,4 +1,4 @@
-export const DEFAULT_GTM_ID = "GTM-W8XNNGDX";
+export const DEFAULT_GTM_ID = "";
 
 export const analyticsConfig = {
   gtmId: process.env.NEXT_PUBLIC_GTM_ID?.trim() || DEFAULT_GTM_ID,
@@ -7,12 +7,12 @@ export const analyticsConfig = {
     event: process.env.NEXT_PUBLIC_CONVERSION_EVENT ?? "generate_lead",
     leadType: "booking_form",
   },
-} as const;
+};
 
 export function buildLeadConversionPayload(
-  slug: string,
-  requestId: string,
-  extras?: { formCampaignName?: string; enquirySource?: string }
+  slug,
+  requestId,
+  extras
 ) {
   return {
     event: analyticsConfig.conversion.event,

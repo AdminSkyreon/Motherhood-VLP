@@ -1,19 +1,13 @@
-import type { VlpLead } from "@/lib/vlp-schema";
 import {
   appendLeadQueryParams,
   buildLeadRequestBody,
-  type LeadSubmitContext,
 } from "@/lib/lead-payload";
 
-export type LeadForwardResult = {
-  requestId?: string;
-};
-
 export async function forwardLeadToUpstream(
-  ctx: LeadSubmitContext,
-  lead: VlpLead,
-  upstream: { endpoint: string; headers: Record<string, string> }
-): Promise<LeadForwardResult> {
+  ctx,
+  lead,
+  upstream
+) {
   const body = buildLeadRequestBody(ctx, lead);
   const endpoint = appendLeadQueryParams(upstream.endpoint, lead, ctx);
 
@@ -28,11 +22,7 @@ export async function forwardLeadToUpstream(
   }
 
   try {
-    const data = (await response.json()) as {
-      requestId?: string;
-      id?: string;
-      reference?: string;
-    };
+    const data = await response.json();
     return {
       requestId: data.requestId ?? data.id ?? data.reference,
     };

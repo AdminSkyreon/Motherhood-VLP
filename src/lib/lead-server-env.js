@@ -1,21 +1,16 @@
-type LeadUpstreamConfig = {
-  endpoint: string;
-  headers: Record<string, string>;
-};
-
-function envKeyForHospital(hospitalId: string): string {
+function envKeyForHospital(hospitalId) {
   return hospitalId.trim().toUpperCase().replace(/[^A-Z0-9]+/g, "_");
 }
 
-function parseExtraHeaders(raw: string | undefined): Record<string, string> {
+function parseExtraHeaders(raw) {
   if (!raw?.trim()) return {};
 
   try {
-    const parsed = JSON.parse(raw) as unknown;
+    const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
     return Object.fromEntries(
       Object.entries(parsed).filter(
-        (entry): entry is [string, string] =>
+        (entry) =>
           typeof entry[0] === "string" && typeof entry[1] === "string"
       )
     );
@@ -24,7 +19,7 @@ function parseExtraHeaders(raw: string | undefined): Record<string, string> {
   }
 }
 
-export function resolveLeadUpstream(hospitalId: string): LeadUpstreamConfig | null {
+export function resolveLeadUpstream(hospitalId) {
   const key = envKeyForHospital(hospitalId);
 
   const endpoint =
@@ -42,7 +37,7 @@ export function resolveLeadUpstream(hospitalId: string): LeadUpstreamConfig | nu
     ...parseExtraHeaders(process.env[`LEAD_API_HEADERS_${key}`]),
   };
 
-  const headers: Record<string, string> = {
+  const headers = {
     "Content-Type": "application/json",
     ...extraHeaders,
     ...(authorization ? { Authorization: authorization } : {}),

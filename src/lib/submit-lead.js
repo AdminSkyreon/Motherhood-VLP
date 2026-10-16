@@ -1,20 +1,11 @@
-import type { VlpLead } from "@/lib/vlp-schema";
 import {
   appendLeadQueryParams,
   buildLeadRequestBody,
   buildLeadSubmitContext,
-  type LeadFormPayload,
-  type LeadHospitalContext,
 } from "@/lib/lead-payload";
 import { basePath, vlpPageUrl } from "@/lib/site";
 
-export type { LeadFormPayload, LeadHospitalContext };
-
-export type LeadSubmitResult = {
-  requestId: string;
-};
-
-function resolveCampaignParams(): Record<string, string> {
+function resolveCampaignParams() {
   if (typeof window === "undefined") return {};
 
   const params = new URLSearchParams(window.location.search);
@@ -30,7 +21,7 @@ function resolveCampaignParams(): Record<string, string> {
     "keyword",
     "device",
   ];
-  const campaign: Record<string, string> = {};
+  const campaign = {};
 
   for (const key of keys) {
     const value = params.get(key);
@@ -46,19 +37,18 @@ function resolveCampaignParams(): Record<string, string> {
   return campaign;
 }
 
-function parseLeadResponseRequestId(data: unknown): string | undefined {
+function parseLeadResponseRequestId(data) {
   if (!data || typeof data !== "object") return undefined;
-  const record = data as { requestId?: string; id?: string; reference?: string };
-  return record.requestId ?? record.id ?? record.reference;
+  return data.requestId ?? data.id ?? data.reference;
 }
 
-function parseLeadResponseError(data: unknown): string | undefined {
+function parseLeadResponseError(data) {
   if (!data || typeof data !== "object") return undefined;
-  const error = (data as { error?: unknown }).error;
+  const error = data.error;
   return typeof error === "string" && error.trim() ? error.trim() : undefined;
 }
 
-async function throwIfLeadFailed(response: Response): Promise<void> {
+async function throwIfLeadFailed(response) {
   if (response.ok) return;
 
   let message = "Lead submission failed";
@@ -71,12 +61,12 @@ async function throwIfLeadFailed(response: Response): Promise<void> {
 }
 
 async function submitLeadViaProxy(
-  ctx: ReturnType<typeof buildLeadSubmitContext>,
-  form: LeadFormPayload,
-  lead: VlpLead,
-  hospital: LeadHospitalContext,
-  requestIdPrefix: string
-): Promise<LeadSubmitResult> {
+  ctx,
+  form,
+  lead,
+  hospital,
+  requestIdPrefix
+) {
   const response = await fetch(`${basePath}/api/leads`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -91,7 +81,7 @@ async function submitLeadViaProxy(
 
   await throwIfLeadFailed(response);
 
-  let requestId: string | undefined;
+  let requestId;
   try {
     requestId = parseLeadResponseRequestId(await response.json());
   } catch {
@@ -105,11 +95,11 @@ async function submitLeadViaProxy(
 }
 
 export async function submitLead(
-  form: LeadFormPayload,
-  lead: VlpLead,
-  hospital: LeadHospitalContext,
-  requestIdPrefix: string
-): Promise<LeadSubmitResult> {
+  form,
+  lead,
+  hospital,
+  requestIdPrefix
+) {
   const ctx = buildLeadSubmitContext(form, lead, hospital, resolveCampaignParams(), {
     submittedAt: new Date().toISOString(),
     pageUrl: vlpPageUrl(hospital.route),
@@ -138,7 +128,7 @@ export async function submitLead(
 
   const body = buildLeadRequestBody(ctx, lead);
   const endpoint = appendLeadQueryParams(lead.endpoint, lead, ctx);
-  const headers: Record<string, string> = {
+  const headers = {
     "Content-Type": "application/json",
     ...lead.headers,
   };
@@ -151,7 +141,7 @@ export async function submitLead(
 
   await throwIfLeadFailed(response);
 
-  let requestId: string | undefined;
+  let requestId;
   try {
     requestId = parseLeadResponseRequestId(await response.json());
   } catch {
@@ -164,7 +154,7 @@ export async function submitLead(
   };
 }
 
-export function resolvePageLead(slug: string, lead?: VlpLead): VlpLead {
+export function resolvePageLead(slug, lead) {
   return {
     hospitalId: slug,
     source: "vlp-landing-page",
@@ -175,17 +165,7 @@ export function resolvePageLead(slug: string, lead?: VlpLead): VlpLead {
   };
 }
 
-export function hospitalToLeadContext(site: {
-  slug: string;
-  route?: string;
-  hospitalName: string;
-  hospitalShortName: string;
-  brandName: string;
-  chainName: string;
-  regionLabel: string;
-  address: string;
-  phone: { display: string; tel: string };
-}): LeadHospitalContext {
+export function hospitalToLeadContext(site) {
   return {
     slug: site.slug,
     route: site.route ?? site.slug,

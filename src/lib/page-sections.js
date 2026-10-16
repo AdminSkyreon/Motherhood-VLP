@@ -1,8 +1,4 @@
-import type { VlpPageConfig, PageSectionFlags } from "@/lib/vlp-schema";
-
-export type SectionKey = keyof PageSectionFlags;
-
-const DEFAULT_SECTIONS: Required<PageSectionFlags> = {
+const DEFAULT_SECTIONS = {
   hero: true,
   benefitsStrip: true,
   statsBar: true,
@@ -19,16 +15,13 @@ const DEFAULT_SECTIONS: Required<PageSectionFlags> = {
   stickyCta: true,
 };
 
-export function resolvePageSections(config: VlpPageConfig): Required<PageSectionFlags> {
+export function resolvePageSections(config) {
   return {
     ...DEFAULT_SECTIONS,
     ...config.site.pageSections,
   };
 }
 
-export function isSectionEnabled(
-  sections: Required<PageSectionFlags>,
-  key: SectionKey
-): boolean {
+export function isSectionEnabled(sections, key) {
   return sections[key] !== false;
 }

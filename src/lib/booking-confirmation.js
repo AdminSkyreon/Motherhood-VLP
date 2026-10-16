@@ -1,24 +1,19 @@
 const STORAGE_PREFIX = "motherhood-vlp-booking-ref:";
 
-const consumedConfirmations = new Map<string, BookingConfirmation>();
+const consumedConfirmations = new Map();
 
-export type BookingConfirmation = {
-  requestId: string;
-  name: string;
-};
-
-export function bookingConfirmationKey(slug: string): string {
+export function bookingConfirmationKey(slug) {
   return `${STORAGE_PREFIX}${slug}`;
 }
 
-export function saveBookingConfirmation(slug: string, data: BookingConfirmation): void {
+export function saveBookingConfirmation(slug, data) {
   if (typeof window === "undefined") return;
   sessionStorage.setItem(bookingConfirmationKey(slug), JSON.stringify(data));
 }
 
-function parseStored(value: string): BookingConfirmation | null {
+function parseStored(value) {
   try {
-    const parsed = JSON.parse(value) as Partial<BookingConfirmation>;
+    const parsed = JSON.parse(value);
     if (parsed.requestId?.trim() && parsed.name?.trim()) {
       return { requestId: parsed.requestId.trim(), name: parsed.name.trim() };
     }
@@ -31,14 +26,14 @@ function parseStored(value: string): BookingConfirmation | null {
   return { requestId: legacy, name: "there" };
 }
 
-function readBookingConfirmation(slug: string): BookingConfirmation | null {
+function readBookingConfirmation(slug) {
   if (typeof window === "undefined") return null;
   const value = sessionStorage.getItem(bookingConfirmationKey(slug));
   if (!value) return null;
   return parseStored(value);
 }
 
-export function consumeBookingConfirmation(slug: string): BookingConfirmation | null {
+export function consumeBookingConfirmation(slug) {
   if (typeof window === "undefined") return null;
 
   const cached = consumedConfirmations.get(slug);
@@ -51,7 +46,7 @@ export function consumeBookingConfirmation(slug: string): BookingConfirmation | 
   return value;
 }
 
-export function personalizeBookingText(text: string, name: string): string {
+export function personalizeBookingText(text, name) {
   const displayName = name.trim() || "there";
   return text.replace(/\{name\}/gi, displayName);
 }

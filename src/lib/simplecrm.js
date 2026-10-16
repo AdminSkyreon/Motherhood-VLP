@@ -1,32 +1,12 @@
-import type { VlpLead } from "@/lib/vlp-schema";
-import type { LeadSubmitContext } from "@/lib/lead-payload";
 import { normalizeIndianMobile } from "./phone";
 
-export type SimpleCrmConfig = {
-  baseUrl: string;
-  clientId: string;
-  clientSecret: string;
-  username: string;
-  password: string;
-  grantType: "password" | "client_credentials";
-};
+let tokenCache = null;
 
-export type SimpleCrmLeadResult = {
-  requestId?: string;
-};
-
-type TokenCache = {
-  accessToken: string;
-  expiresAt: number;
-};
-
-let tokenCache: TokenCache | null = null;
-
-function trimTrailingSlash(url: string): string {
+function trimTrailingSlash(url) {
   return url.replace(/\/+$/, "");
 }
 
-export function resolveSimpleCrmConfig(): SimpleCrmConfig | null {
+export function resolveSimpleCrmConfig() {
   const baseUrl = process.env.SIMPLECRM_BASE_URL?.trim();
   const clientId = process.env.SIMPLECRM_CLIENT_ID?.trim();
   const clientSecret = process.env.SIMPLECRM_CLIENT_SECRET?.trim();
@@ -50,11 +30,11 @@ export function resolveSimpleCrmConfig(): SimpleCrmConfig | null {
   };
 }
 
-export function isSimpleCrmConfigured(): boolean {
+export function isSimpleCrmConfigured() {
   return resolveSimpleCrmConfig() !== null;
 }
 
-function isEmptyAttributeValue(value: unknown): boolean {
+function isEmptyAttributeValue(value) {
   if (value == null) return true;
   if (typeof value === "string") return value.trim() === "";
   if (Array.isArray(value)) return value.length === 0;
@@ -62,9 +42,9 @@ function isEmptyAttributeValue(value: unknown): boolean {
 }
 
 function omitEmptyAttributes(
-  attributes: Record<string, unknown>,
-  omitEmpty: boolean | undefined
-): Record<string, unknown> {
+  attributes,
+  omitEmpty
+) {
   if (!omitEmpty) return attributes;
 
   return Object.fromEntries(
@@ -72,10 +52,10 @@ function omitEmptyAttributes(
   );
 }
 
-function buildDescription(ctx: LeadSubmitContext, useDescriptionForDoctor: boolean): string {
+function buildDescription(ctx, useDescriptionForDoctor) {
   const { form } = ctx;
   const doctorName = form.doctor?.trim() ?? "";
-  const descriptionParts: string[] = [];
+  const descriptionParts = [];
 
   const comment = form.comment?.trim();
   if (comment) descriptionParts.push(comment);
@@ -102,9 +82,9 @@ function buildDescription(ctx: LeadSubmitContext, useDescriptionForDoctor: boole
 }
 
 export function buildSimpleCrmLeadPayload(
-  ctx: LeadSubmitContext,
-  lead: VlpLead
-): { data: { type: "Leads"; attributes: Record<string, unknown> } } {
+  ctx,
+  lead
+) {
   if (!lead.unitnameC) {
     throw new Error(`SimpleCRM unitnameC is not configured for hospital "${lead.hospitalId}"`);
   }
@@ -158,12 +138,12 @@ export function buildSimpleCrmLeadPayload(
   };
 }
 
-async function requestAccessToken(config: SimpleCrmConfig): Promise<string> {
+async function requestAccessToken(config) {
   if (tokenCache && tokenCache.expiresAt > Date.now() + 60_000) {
     return tokenCache.accessToken;
   }
 
-  const authBody: Record<string, string> = {
+  const authBody = {
     grant_type: config.grantType,
     client_id: config.clientId,
     client_secret: config.clientSecret,
@@ -187,10 +167,7 @@ async function requestAccessToken(config: SimpleCrmConfig): Promise<string> {
     throw new Error("Unable to retrieve access token.");
   }
 
-  const data = (await response.json()) as {
-    access_token?: string;
-    expires_in?: number;
-  };
+  const data = await response.json();
 
   if (!data.access_token) {
     throw new Error("Unable to retrieve access token.");
@@ -204,22 +181,16 @@ async function requestAccessToken(config: SimpleCrmConfig): Promise<string> {
   return data.access_token;
 }
 
-function parseLeadId(data: unknown): string | undefined {
+function parseLeadId(data) {
   if (!data || typeof data !== "object") return undefined;
-
-  const record = data as {
-    data?: { id?: string; attributes?: { id?: string } };
-    id?: string;
-  };
-
-  return record.data?.id ?? record.data?.attributes?.id ?? record.id;
+  return data.data?.id ?? data.data?.attributes?.id ?? data.id;
 }
 
 export async function createSimpleCrmLead(
-  ctx: LeadSubmitContext,
-  lead: VlpLead,
-  config: SimpleCrmConfig = resolveSimpleCrmConfig()!
-): Promise<SimpleCrmLeadResult> {
+  ctx,
+  lead,
+  config = resolveSimpleCrmConfig()
+) {
   const accessToken = await requestAccessToken(config);
   const payload = buildSimpleCrmLeadPayload(ctx, lead);
 
@@ -237,7 +208,7 @@ export async function createSimpleCrmLead(
     throw new Error("Lead creation failed.");
   }
 
-  let responseBody: unknown;
+  let responseBody;
   try {
     responseBody = await response.json();
   } catch {

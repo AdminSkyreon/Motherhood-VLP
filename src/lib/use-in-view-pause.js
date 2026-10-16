@@ -1,17 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type RefObject } from "react";
-
-type UseInViewPauseOptions = {
-  rootMargin?: string;
-  threshold?: number | number[];
-};
+import { useEffect, useRef, useState } from "react";
 
 /** Returns false when the observed element is off-screen (animations should pause). */
-export function useInViewPause<T extends Element>(
-  ref: RefObject<T | null>,
-  { rootMargin = "0px", threshold = 0 }: UseInViewPauseOptions = {}
-): boolean {
+export function useInViewPause(
+  ref,
+  { rootMargin = "0px", threshold = 0 } = {}
+) {
   const [inView, setInView] = useState(true);
 
   useEffect(() => {
@@ -33,22 +28,22 @@ export function useInViewPause<T extends Element>(
 }
 
 /** Stable div ref + in-view flag for carousel section roots. */
-export function useSectionInView(options?: UseInViewPauseOptions) {
-  const ref = useRef<HTMLDivElement | null>(null);
+export function useSectionInView(options) {
+  const ref = useRef(null);
   const inView = useInViewPause(ref, options);
   return { ref, inView };
 }
 
 /** Stable section ref + in-view flag for landmark section roots. */
-export function useLandmarkInView(options?: UseInViewPauseOptions) {
-  const ref = useRef<HTMLElement | null>(null);
+export function useLandmarkInView(options) {
+  const ref = useRef(null);
   const inView = useInViewPause(ref, options);
   return { ref, inView };
 }
 
 /** Like useLandmarkInView, but `ready` latches true after the section is first visible. */
-export function useLandmarkInViewOnce(options?: UseInViewPauseOptions) {
-  const ref = useRef<HTMLElement | null>(null);
+export function useLandmarkInViewOnce(options) {
+  const ref = useRef(null);
   const [ready, setReady] = useState(false);
   const rootMargin = options?.rootMargin ?? "0px";
   const threshold = options?.threshold ?? 0;
