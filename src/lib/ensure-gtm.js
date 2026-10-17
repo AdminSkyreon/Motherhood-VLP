@@ -1,16 +1,10 @@
 import { analyticsConfig } from "@/lib/analytics-config";
 
-declare global {
-  interface Window {
-    google_tag_manager?: Record<string, unknown>;
-  }
-}
-
 export const GTM_LOADER_ID = "gtm-default-loader";
 
 const GTM_IDLE_TIMEOUT_MS = 3000;
 
-function gtmInjectSnippet(gtmId: string): string {
+function gtmInjectSnippet(gtmId) {
   return `var id=${JSON.stringify(gtmId)};
     var loaderId=${JSON.stringify(GTM_LOADER_ID)};
     if(!id)return;
@@ -29,7 +23,7 @@ function gtmInjectSnippet(gtmId: string): string {
  * Inline head snippet: load GTM on idle (3s cap), first interaction, or scroll.
  * Uses the same script id as `ensureGtmLoaded` so thank-you cannot double-inject.
  */
-export function gtmDelayedLoaderSnippet(gtmId: string): string {
+export function gtmDelayedLoaderSnippet(gtmId) {
   return `(function(){
     var done=false;
     function load(){
@@ -53,7 +47,7 @@ export function gtmDelayedLoaderSnippet(gtmId: string): string {
  * Ensure the default GTM container is loaded.
  * Safe on landing and thank-you (after soft nav from the booking form).
  */
-export function ensureGtmLoaded(gtmId: string = analyticsConfig.gtmId): void {
+export function ensureGtmLoaded(gtmId = analyticsConfig.gtmId) {
   if (typeof window === "undefined" || !gtmId) return;
 
   window.dataLayer = window.dataLayer || [];
@@ -74,7 +68,7 @@ export function ensureGtmLoaded(gtmId: string = analyticsConfig.gtmId): void {
 }
 
 /** Resolves when the GTM container is ready, or after timeout (dataLayer still queues). */
-export function waitForGtm(gtmId: string = analyticsConfig.gtmId, timeoutMs = 4000): Promise<boolean> {
+export function waitForGtm(gtmId = analyticsConfig.gtmId, timeoutMs = 4000) {
   return new Promise((resolve) => {
     if (typeof window === "undefined") {
       resolve(false);

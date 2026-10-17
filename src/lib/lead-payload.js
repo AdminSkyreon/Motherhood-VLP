@@ -1,68 +1,19 @@
-import type { VlpLead } from "@/lib/vlp-schema";
-
-export type LeadFormPayload = {
-  name: string;
-  phone: string;
-  language?: string;
-  email?: string;
-  comment?: string;
-  doctor?: string;
-  doctorId?: string;
-  areYouPregnant?: string;
-  whichTrimester?: string;
-  expectedDeliveryMonth?: string;
-  strugglingToConceive?: string;
-  planningForPregnancy?: string;
-  tryingDuration?: string;
-  biggestChallenge?: string;
-  lookingFor?: string;
-  howCanWeSupport?: string;
-};
-
-export type LeadHospitalContext = {
-  slug: string;
-  route: string;
-  hospitalName: string;
-  hospitalShortName: string;
-  brandName: string;
-  chainName: string;
-  regionLabel: string;
-  address: string;
-  phone: {
-    display: string;
-    tel: string;
-  };
-};
-
-type LeadPayloadPrimitive = string | number | boolean;
-
-export type LeadSubmitContext = {
-  form: LeadFormPayload;
-  hospital: LeadHospitalContext;
-  lead: VlpLead;
-  campaign: Record<string, string>;
-  meta: {
-    submittedAt: string;
-    pageUrl: string;
-  };
-};
-
 const PLACEHOLDER_RE = /\{\{([^}]+)\}\}/g;
 
-function getByPath(root: unknown, path: string): unknown {
+function getByPath(root, path) {
   const parts = path.split(".").filter(Boolean);
-  let current: unknown = root;
+  let current = root;
 
   for (const part of parts) {
     if (current == null || typeof current !== "object") return undefined;
-    current = (current as Record<string, unknown>)[part];
+    current = current[part];
   }
 
   return current;
 }
 
-function resolveTemplateString(template: string, ctx: LeadSubmitContext): string {
-  return template.replace(PLACEHOLDER_RE, (_, rawPath: string) => {
+function resolveTemplateString(template, ctx) {
+  return template.replace(PLACEHOLDER_RE, (_, rawPath) => {
     const path = rawPath.trim();
     const value = getByPath(ctx, path);
     if (value == null) return "";
@@ -72,20 +23,20 @@ function resolveTemplateString(template: string, ctx: LeadSubmitContext): string
 }
 
 function resolvePayloadValue(
-  value: LeadPayloadPrimitive,
-  ctx: LeadSubmitContext
-): LeadPayloadPrimitive {
+  value,
+  ctx
+) {
   if (typeof value !== "string" || !value.includes("{{")) return value;
   return resolveTemplateString(value, ctx);
 }
 
 export function buildLeadSubmitContext(
-  form: LeadFormPayload,
-  lead: VlpLead,
-  hospital: LeadHospitalContext,
-  campaign: Record<string, string>,
-  meta: { submittedAt: string; pageUrl: string }
-): LeadSubmitContext {
+  form,
+  lead,
+  hospital,
+  campaign,
+  meta
+) {
   return {
     form,
     hospital,
@@ -96,16 +47,16 @@ export function buildLeadSubmitContext(
 }
 
 export function buildLeadRequestBody(
-  ctx: LeadSubmitContext,
-  lead: VlpLead
-): Record<string, unknown> {
+  ctx,
+  lead
+) {
   if (lead.payload) {
     return buildConfiguredPayload(ctx, lead);
   }
   return buildDefaultPayload(ctx);
 }
 
-function buildDefaultPayload(ctx: LeadSubmitContext): Record<string, unknown> {
+function buildDefaultPayload(ctx) {
   const { form, hospital, lead, campaign, meta } = ctx;
 
   return {
@@ -133,8 +84,8 @@ function buildDefaultPayload(ctx: LeadSubmitContext): Record<string, unknown> {
   };
 }
 
-function buildConfiguredPayload(ctx: LeadSubmitContext, lead: VlpLead): Record<string, unknown> {
-  const payload: Record<string, unknown> = {};
+function buildConfiguredPayload(ctx, lead) {
+  const payload = {};
 
   for (const [key, rawValue] of Object.entries(lead.payload ?? {})) {
     const resolved = resolvePayloadValue(rawValue, ctx);
@@ -146,10 +97,10 @@ function buildConfiguredPayload(ctx: LeadSubmitContext, lead: VlpLead): Record<s
 }
 
 export function appendLeadQueryParams(
-  url: string,
-  lead: VlpLead,
-  ctx: LeadSubmitContext
-): string {
+  url,
+  lead,
+  ctx
+) {
   if (!lead.queryParams || Object.keys(lead.queryParams).length === 0) return url;
 
   const parsed = new URL(url);

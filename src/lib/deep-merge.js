@@ -1,12 +1,10 @@
-type PlainObject = Record<string, unknown>;
-
-function isPlainObject(value: unknown): value is PlainObject {
+function isPlainObject(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 /** Deep-merge override into base. Arrays and scalars in override replace base values. */
-export function deepMerge<T extends PlainObject>(base: T, override: PlainObject): T {
-  const result: PlainObject = { ...base };
+export function deepMerge(base, override) {
+  const result = { ...base };
 
   for (const [key, overrideValue] of Object.entries(override)) {
     if (overrideValue === undefined) continue;
@@ -26,5 +24,5 @@ export function deepMerge<T extends PlainObject>(base: T, override: PlainObject)
     result[key] = overrideValue;
   }
 
-  return result as T;
+  return result;
 }

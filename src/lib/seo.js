@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
-
-import type { VlpPageConfig } from "@/lib/vlp-schema";
 import { vlpPageUrl } from "@/lib/site";
 import { pageRoute } from "@/lib/page-route";
 
 const PLACEHOLDER_HOSTS = new Set(["example.com", "www.example.com"]);
 
-function isPlaceholderUrl(url: string): boolean {
+function isPlaceholderUrl(url) {
   try {
     return PLACEHOLDER_HOSTS.has(new URL(url).hostname);
   } catch {
@@ -14,7 +11,7 @@ function isPlaceholderUrl(url: string): boolean {
   }
 }
 
-function resolveOgImages(config: VlpPageConfig) {
+function resolveOgImages(config) {
   const configured =
     config.site.seo.openGraph?.images?.filter((image) => !isPlaceholderUrl(image.url)) ?? [];
 
@@ -40,7 +37,7 @@ function resolveOgImages(config: VlpPageConfig) {
   ];
 }
 
-export function vlpMetadata(config: VlpPageConfig): Metadata {
+export function vlpMetadata(config) {
   const { site } = config;
   const canonical = vlpPageUrl(pageRoute({ slug: site.slug, route: site.route }));
   const og = site.seo.openGraph;
@@ -73,7 +70,7 @@ export function vlpMetadata(config: VlpPageConfig): Metadata {
   };
 }
 
-export function vlpThankYouMetadata(config: VlpPageConfig): Metadata {
+export function vlpThankYouMetadata(config) {
   return {
     title: `Thank You | ${config.site.hospitalShortName}`,
     robots: {
@@ -83,7 +80,7 @@ export function vlpThankYouMetadata(config: VlpPageConfig): Metadata {
   };
 }
 
-export function vlpJsonLd(config: VlpPageConfig, pageUrl: string) {
+export function vlpJsonLd(config, pageUrl) {
   const { site } = config;
   const heroSrc = site.assets.heroImageSrc;
 

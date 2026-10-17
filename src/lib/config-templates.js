@@ -1,15 +1,10 @@
 import { personalizeBookingText } from "./booking-confirmation";
-import type { VlpPageConfig } from "./vlp-schema";
-
-type InterpolateExtras = {
-  name?: string;
-};
 
 export function interpolatePageText(
-  text: string,
-  config: VlpPageConfig,
-  extras?: InterpolateExtras
-): string {
+  text,
+  config,
+  extras
+) {
   const { site } = config;
   let result = text
     .replace(/\{regionLabel\}/g, site.regionLabel)
