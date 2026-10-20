@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Phone } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 import { assetUrl } from '@/lib/assetUrl';
 
 export default function HeroSection({ header, heroForm }) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: '',
     language: 'English',
@@ -13,7 +15,6 @@ export default function HeroSection({ header, heroForm }) {
     consent: false,
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,7 +22,6 @@ export default function HeroSection({ header, heroForm }) {
     e.preventDefault();
     setErrorMessage('');
 
-    // 1. Phone Number Validation
     const cleanPhone = formData.phone.trim();
     const phoneRegex = /^[6-9]\d{9}$/;
     if (!phoneRegex.test(cleanPhone)) {
@@ -32,7 +32,6 @@ export default function HeroSection({ header, heroForm }) {
     setIsSubmitting(true);
 
     try {
-      // 2. API Call 
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: {
@@ -49,7 +48,6 @@ export default function HeroSection({ header, heroForm }) {
         throw new Error('Lead submission failed');
       }
 
-      // 3. Trigger Analytics / DataLayer event
       if (typeof window !== 'undefined' && window.dataLayer) {
         window.dataLayer.push({
           event: 'form_submit',
@@ -57,11 +55,12 @@ export default function HeroSection({ header, heroForm }) {
         });
       }
 
-      setIsSubmitted(true);
+      // Senior ke requirement ke mutabiq alag thank-you page par redirect karega
+      const currentSlug = window.location.pathname.split('/')[1] || 'bangalore';
+      router.push(`/${currentSlug}/thank-you`);
     } catch (error) {
       console.error('Submission Error:', error);
       setErrorMessage('Submission failed. Please try again later.');
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -140,7 +139,6 @@ export default function HeroSection({ header, heroForm }) {
             className="sm:w-5 sm:h-5"
             strokeWidth={2.5}
           />
-
           <span>{header?.phoneNumber}</span>
         </a>
       </header>
@@ -223,13 +221,11 @@ export default function HeroSection({ header, heroForm }) {
             <span className="block">
               {heroForm.titlePart1}
             </span>
-
             <span className="block">
               {heroForm.titlePart2}
             </span>
           </h2>
 
-          {/* ================= FORM CONTAINER ================= */}
           <div
             className="
               bg-white
@@ -248,50 +244,127 @@ export default function HeroSection({ header, heroForm }) {
               lg:mx-auto
             "
           >
-            {isSubmitted ? (
-              <div
-                className="
-                  w-full
-                  text-center
-                  py-12
-                  px-4
-                  bg-green-50
-                  rounded-2xl
-                  border
-                  border-green-200
-                "
-              >
-                <p className="text-[#166534] text-lg md:text-xl font-medium">
-                  {heroForm.successMessage}
-                </p>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-2.5 w-full"
+            >
+              {errorMessage && (
+                <div className="p-2 bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg text-center">
+                  {errorMessage}
+                </div>
+              )}
+
+              <div>
+                <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
+                  {heroForm.fields.fullName}
+                </label>
+                <input
+                  id="fullNameInput"
+                  type="text"
+                  placeholder={heroForm.fields.fullName}
+                  value={formData.fullName}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      fullName: e.target.value,
+                    })
+                  }
+                  required
+                  className="
+                    w-full
+                    px-3.5
+                    py-2
+                    rounded-xl
+                    border
+                    border-pink-200
+                    bg-white
+                    focus:outline-none
+                    focus:ring-1
+                    focus:ring-[#DB5070]
+                    text-gray-800
+                    text-sm
+                    placeholder:text-gray-400
+                  "
+                />
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-2.5 w-full"
-              >
-                {/* Error Message Display */}
-                {errorMessage && (
-                  <div className="p-2 bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg text-center">
-                    {errorMessage}
-                  </div>
-                )}
 
-                {/* ================= FULL NAME ================= */}
-                <div>
-                  <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {heroForm.fields.fullName}
-                  </label>
+              <div>
+                <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
+                  {heroForm.fields.language}
+                </label>
+                <select
+                  value={formData.language}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      language: e.target.value,
+                    })
+                  }
+                  className="
+                    w-full
+                    px-3.5
+                    py-2
+                    rounded-xl
+                    border
+                    border-pink-200
+                    bg-white
+                    focus:outline-none
+                    focus:ring-1
+                    focus:ring-[#DB5070]
+                    text-gray-800
+                    text-sm
+                  "
+                >
+                  {heroForm.fields.languagesList.map(
+                    (lang, index) => (
+                      <option key={index} value={lang}>
+                        {lang}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
 
+              <div>
+                <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
+                  {heroForm.fields.phone}
+                </label>
+                <div
+                  className="
+                    flex
+                    rounded-xl
+                    border
+                    border-pink-200
+                    overflow-hidden
+                    focus-within:ring-1
+                    focus-within:ring-[#DB5070]
+                    bg-white
+                  "
+                >
+                  <span
+                    className="
+                      px-3
+                      flex
+                      items-center
+                      text-gray-800
+                      font-semibold
+                      text-sm
+                      border-r
+                      border-pink-200
+                      bg-white
+                    "
+                  >
+                    +91
+                  </span>
                   <input
-                    id="fullNameInput"
-                    type="text"
-                    placeholder={heroForm.fields.fullName}
-                    value={formData.fullName}
+                    type="tel"
+                    maxLength={10}
+                    placeholder={heroForm.fields.phone}
+                    value={formData.phone}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
-                        fullName: e.target.value,
+                        phone: e.target.value.replace(/\D/g, ''),
                       })
                     }
                     required
@@ -299,174 +372,67 @@ export default function HeroSection({ header, heroForm }) {
                       w-full
                       px-3.5
                       py-2
-                      rounded-xl
-                      border
-                      border-pink-200
                       bg-white
                       focus:outline-none
-                      focus:ring-1
-                      focus:ring-[#DB5070]
                       text-gray-800
                       text-sm
                       placeholder:text-gray-400
                     "
                   />
                 </div>
+              </div>
 
-                {/* ================= LANGUAGE ================= */}
-                <div>
-                  <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {heroForm.fields.language}
-                  </label>
-
-                  <select
-                    value={formData.language}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        language: e.target.value,
-                      })
-                    }
-                    className="
-                      w-full
-                      px-3.5
-                      py-2
-                      rounded-xl
-                      border
-                      border-pink-200
-                      bg-white
-                      focus:outline-none
-                      focus:ring-1
-                      focus:ring-[#DB5070]
-                      text-gray-800
-                      text-sm
-                    "
-                  >
-                    {heroForm.fields.languagesList.map(
-                      (lang, index) => (
-                        <option key={index} value={lang}>
-                          {lang}
-                        </option>
-                      )
-                    )}
-                  </select>
-                </div>
-
-                {/* ================= PHONE ================= */}
-                <div>
-                  <label className="block text-[12px] font-semibold text-[#231F20] mb-1">
-                    {heroForm.fields.phone}
-                  </label>
-
-                  <div
-                    className="
-                      flex
-                      rounded-xl
-                      border
-                      border-pink-200
-                      overflow-hidden
-                      focus-within:ring-1
-                      focus-within:ring-[#DB5070]
-                      bg-white
-                    "
-                  >
-                    <span
-                      className="
-                        px-3
-                        flex
-                        items-center
-                        text-gray-800
-                        font-semibold
-                        text-sm
-                        border-r
-                        border-pink-200
-                        bg-white
-                      "
-                    >
-                      +91
-                    </span>
-
-                    <input
-                      type="tel"
-                      maxLength={10}
-                      placeholder={heroForm.fields.phone}
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          phone: e.target.value.replace(/\D/g, ''),
-                        })
-                      }
-                      required
-                      className="
-                        w-full
-                        px-3.5
-                        py-2
-                        bg-white
-                        focus:outline-none
-                        text-gray-800
-                        text-sm
-                        placeholder:text-gray-400
-                      "
-                    />
-                  </div>
-                </div>
-
-                {/* ================= CONSENT ================= */}
-                <div className="flex items-start gap-2 pt-1">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    checked={formData.consent}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        consent: e.target.checked,
-                      })
-                    }
-                    required
-                    style={{ accentColor: '#DB5070' }}
-                    className="mt-0.5 h-4 w-4 cursor-pointer"
-                  />
-
-                  <label
-                    htmlFor="consent"
-                    className="
-                      text-[11px]
-                      text-gray-600
-                      leading-tight
-                      cursor-pointer
-                    "
-                  >
-                    {heroForm.consentText}
-                  </label>
-                </div>
-
-                {/* ================= SUBMIT ================= */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
+              <div className="flex items-start gap-2 pt-1">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  checked={formData.consent}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      consent: e.target.checked,
+                    })
+                  }
+                  required
+                  style={{ accentColor: '#DB5070' }}
+                  className="mt-0.5 h-4 w-4 cursor-pointer"
+                />
+                <label
+                  htmlFor="consent"
                   className="
-                    w-full
-                    bg-[#DB5070]
-                    hover:bg-[#c2425e]
-                    text-white
-                    font-semibold
-                    py-2.5
-                    rounded-full
-                    shadow-lg
-                    transition-all
-                    mt-1
-                    text-sm
-                    md:text-base
+                    text-[11px]
+                    text-gray-600
+                    leading-tight
                     cursor-pointer
-                    disabled:opacity-50
                   "
                 >
-                  {isSubmitting ? 'Submitting...' : heroForm.buttonText}
-                </button>
-              </form>
-            )}
+                  {heroForm.consentText}
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="
+                  w-full
+                  bg-[#DB5070]
+                  hover:bg-[#c2425e]
+                  text-white
+                  font-semibold
+                  py-2.5
+                  rounded-full
+                  shadow-lg
+                  transition-all
+                  mt-1
+                  text-sm
+                  md:text-base
+                  cursor-pointer
+                  disabled:opacity-50
+                "
+              >
+                {isSubmitting ? 'Submitting...' : heroForm.buttonText}
+              </button>
+            </form>
           </div>
         </div>
       </main>
