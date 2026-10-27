@@ -209,15 +209,22 @@
         "privacyPolicy": "#",
         "terms": "#"
       }
+    },
+    "booking": {
+      "lead": {
+        "hospitalId": "progressive",
+        "source": "landing-page-vlp-progressive",
+        "website": "MHI",
+        "unitnameC": "Motherhood - [City Name] VLP",
+        "enquirySource": "Google",
+        "formEnquiryType": "Campaign",
+        "formEnquirySubtype": "VLP",
+        "formCampaignName": "MHVLP | Google Search | VLP | Progressive | [City Name]",
+        "campaignDefaults": {
+          "utm_source": "organic",
+          "utm_medium": "website"
+        }
+      }
     }
-  },
-  "lead": {
-    "hospitalId": "progressive",
-    "source": "landing-page-vlp-progressive",
-    "unitnameC": "Motherhood - [City Name] VLP",
-    "enquirySource": "Google",
-    "formEnquiryType": "Campaign",
-    "formEnquirySubtype": "VLP",
-    "formCampaignName": "MHVLP | Google Search | VLP | Progressive | [City Name]"
   }
 }

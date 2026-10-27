@@ -429,15 +429,22 @@
         "privacyPolicy": "#",
         "terms": "#"
       }
+    },
+    "booking": {
+      "lead": {
+        "hospitalId": "progressive",
+        "source": "landing-page-vlp-progressive",
+        "website": "MHI",
+        "unitnameC": "Motherhood - Bangalore VLP",
+        "enquirySource": "Google",
+        "formEnquiryType": "Campaign",
+        "formEnquirySubtype": "VLP",
+        "formCampaignName": "MHVLP | Google Search | VLP | Progressive | Bangalore | Free First Consultation",
+        "campaignDefaults": {
+          "utm_source": "organic",
+          "utm_medium": "website"
+        }
+      }
     }
-  },
-  "lead": {
-    "hospitalId": "progressive",
-    "source": "landing-page-vlp-progressive",
-    "unitnameC": "Motherhood - Bangalore VLP",
-    "enquirySource": "Google",
-    "formEnquiryType": "Campaign",
-    "formEnquirySubtype": "VLP",
-    "formCampaignName": "MHVLP | Google Search | VLP | Progressive | Bangalore | Free First Consultation"
   }
 }
