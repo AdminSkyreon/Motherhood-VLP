@@ -9,7 +9,7 @@
       "enabled": true,
       "logoImg": "/motherhood-fertility-logo.png",
       "logoAlt": "Motherhood Fertility & IVF",
-      "phoneNumber": "080 6901 9060"
+      "phoneNumber": "080 69019060"
     },
     "heroForm": {
       "enabled": true,
@@ -121,7 +121,7 @@
         {
           "icon": "/images/ivf-experts-icon.png",
           "title": "Experienced IVF Experts",
-          "description": "Our experienced IVF expert doctors ensure personalized care and the best outcomes."
+          "description": "Our experienced IVF expert doctors ensure personalised care and the best outcomes."
         },
         {
           "icon": "/images/success-rate-icon.png",
@@ -131,11 +131,11 @@
         {
           "icon": "/images/comprehensive-care-icon.png",
           "title": "Comprehensive Fertility Care",
-          "description": "We offer complete fertility care including IVF, IUI, ICSI, and personalized treatment plans."
+          "description": "We offer complete fertility care including IVF, IUI, ICSI, and personalised treatment plans."
         }
       ],
       "overviewParagraphs": [
-        "Motherhood Fertility & IVF is one of the best IVF hospitals in HRBR Layout, Bangalore, known for advanced IVF treatment, experienced IVF expert doctors, and high success rates. We provide comprehensive fertility care including IVF, IUI, ICSI, and personalized infertility treatment plans.",
+        "Motherhood Fertility & IVF is one of the best IVF hospitals in HRBR Layout, Bangalore, known for advanced IVF treatment, experienced IVF expert doctors, and high success rates. We provide comprehensive fertility care including IVF, IUI, ICSI, and personalised infertility treatment plans.",
         "Our team of leading fertility & IVF specialists uses state-of-the-art technology to treat all female infertility issues with precision and care. With a patient-focused approach and proven results, we help couples achieve their dream of parenthood."
       ]
     },
@@ -160,7 +160,7 @@
           "icon": "/images/icsi.png",
           "title": "ICSI",
           "subtitle": "",
-          "description": "A specialized form of IVF where a single sperm is injected directly into a mature egg."
+          "description": "A specialised form of IVF where a single sperm is injected directly into a mature egg."
         },
         {
           "icon": "/images/semen-freezing.png",
@@ -274,7 +274,7 @@
           "icon": "/images/step-fertilization.png",
           "activeIcon": "/images/step-fertilization-pink.png",
           "title": "Fertilization",
-          "description": "Eggs are fertilized with sperm in our advanced embryology lab."
+          "description": "Eggs are fertilised with sperm in our advanced embryology lab."
         },
         {
           "stepNumber": "05",
@@ -305,7 +305,7 @@
       "faqs": [
         {
           "question": "How many IVF cycles are required to get pregnant?",
-          "answer": "Most couples conceive in the first IVF cycle, while others may require more than one cycle. The number of cycles depends on age, fertility condition, and embryo quality. Our specialists will create a personalized plan based on your specific needs."
+          "answer": "Most couples conceive in the first IVF cycle, while others may require more than one cycle. The number of cycles depends on age, fertility condition, and embryo quality. Our specialists will create a personalised plan based on your specific needs."
         },
         {
           "question": "Is bed rest required after embryo transfer?",
@@ -313,7 +313,7 @@
         },
         {
           "question": "Can IVF help after failed IUI or other treatments?",
-          "answer": "Yes, IVF is often recommended as a successful next step when IUI or other fertility treatments have not yielded results. IVF bypasses many common fertility blockages by managing fertilization directly in a specialized laboratory setting."
+          "answer": "Yes, IVF is often recommended as a successful next step when IUI or other fertility treatments have not yielded results. IVF bypasses many common fertility blockages by managing fertilization directly in a specialised laboratory setting."
         },
         {
           "question": "Is IVF suitable for working women?",
@@ -402,7 +402,7 @@
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2201684127963!2d77.64863969999999!3d13.021646899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17e3105b77d1%3A0x6ad0e1377d235be2!2sMotherhood%20Fertility%20%26%20IVF%20Center%20-%20Best%20IVF%20Centre%20in%20HRBR%20Layout%2C%20Bangalore%20%7C%20Infertility%20Treatment!5e0!3m2!1sen!2sus!4v1789153600241!5m2!1sen!2sus",
       "callAction": {
         "text": "Call Now",
-        "phoneNumber": "+919876543210"
+        "phoneNumber": "080 69019060"
       },
       "bookAction": {
         "text": "Book Now",
@@ -413,10 +413,26 @@
       "enabled": true,
       "hospitalName": "Motherhood Fertility & IVF",
       "branch": "HRBR Layout, Kalyan Nagar",
-      "phone": "080 6901 9060",
+      "phone": "080 69019060",
       "links": {
         "privacyPolicy": "#",
         "terms": "#"
+      }
+    },
+    "booking": {
+      "lead": {
+        "hospitalId": "hrbr-layout",
+        "source": "landing-page-hrbr-layout",
+        "website": "MHI",
+        "unitnameC": "Motherhood - HRBR Layout VLP",
+        "enquirySource": "Google",
+        "formEnquiryType": "Campaign",
+        "formEnquirySubtype": "VLP",
+        "formCampaignName": "MHVLP | Google Search | VLP | Progressive | HRBR Layout | Free First Consultation",
+        "campaignDefaults": {
+          "utm_source": "organic",
+          "utm_medium": "website"
+        }
       }
     }
   }

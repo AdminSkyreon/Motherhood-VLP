@@ -418,6 +418,22 @@
         "privacyPolicy": "#",
         "terms": "#"
       }
+    },
+    "booking": {
+      "lead": {
+        "hospitalId": "patna",
+        "source": "landing-page-patna",
+        "website": "MHI",
+        "unitnameC": "Motherhood - Patna VLP",
+        "enquirySource": "Google",
+        "formEnquiryType": "Campaign",
+        "formEnquirySubtype": "VLP",
+        "formCampaignName": "MHVLP | Google Search | VLP | Progressive | Patna | Free First Consultation",
+        "campaignDefaults": {
+          "utm_source": "organic",
+          "utm_medium": "website"
+        }
+      }
     }
   }
 }
