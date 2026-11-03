@@ -17,8 +17,8 @@ export default function HeroSection({ header, heroForm, lead, hospital, slug }: 
         bg-gray-50
         flex
         flex-col
-        pt-[68px]
-        md:pt-[76px]
+        pt-[60px]
+        md:pt-[68px]
         overflow-x-hidden
       "
       style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -29,7 +29,7 @@ export default function HeroSection({ header, heroForm, lead, hospital, slug }: 
           w-full
           bg-white
           shadow-sm
-          py-3
+          py-2.5
           px-4
           sm:px-6
           md:px-12
@@ -94,15 +94,15 @@ export default function HeroSection({ header, heroForm, lead, hospital, slug }: 
           px-0
           sm:px-4
           md:px-8
-          pt-1
-          sm:pt-2
-          pb-0
+          pt-0
+          sm:pt-3
+          pb-2
           grid
           grid-cols-1
           lg:grid-cols-12
-          gap-3
+          gap-0
           lg:gap-5
-          items-stretch
+          items-start
           box-border
         "
       >
@@ -128,46 +128,27 @@ export default function HeroSection({ header, heroForm, lead, hospital, slug }: 
               shadow-none
               sm:shadow-[0_10px_35px_rgba(219,80,112,0.18)]
               relative
-              flex-grow
             "
           >
             <VideoPlayer src={videoSrc} />
           </div>
         </div>
 
-        {/* ================= FORM ================= */}
+        {/* ================= FORM CONTAINER ================= */}
         <div
           className="
             lg:col-span-5
             w-full
             flex
             flex-col
-            justify-between
             px-4
             sm:px-0
+            mt-3
+            lg:mt-0
+            items-center
+            lg:items-stretch
           "
         >
-          {/* ================= FORM TITLE ================= */}
-          <h2
-            className="
-              font-bold
-              text-[#231F20]
-              mb-2
-              text-center
-              leading-tight
-              text-[20px]
-              sm:text-[22px]
-              md:text-[25px]
-            "
-          >
-            <span className="block">
-              {heroForm.titlePart1}
-            </span>
-            <span className="block">
-              {heroForm.titlePart2}
-            </span>
-          </h2>
-
           <div
             className="
               bg-white
@@ -179,13 +160,34 @@ export default function HeroSection({ header, heroForm, lead, hospital, slug }: 
               border-pink-200
               flex
               flex-col
-              justify-center
               shadow-[0_10px_35px_rgba(59,130,246,0.12)]
               w-full
-              lg:w-[82%]
+              max-w-md
+              lg:max-w-[70%]
               lg:mx-auto
             "
           >
+            {/* Form Internal Heading */}
+            <h2
+              className="
+                font-bold
+                text-[#0057A4]
+                mb-3
+                text-left
+                leading-tight
+                text-[16px]
+                sm:text-[18px]
+                md:text-[20px]
+              "
+            >
+              <span className="block">
+                {heroForm.titlePart1}
+              </span>
+              <span className="block">
+                {heroForm.titlePart2}
+              </span>
+            </h2>
+
             <BookingFormCard
               heroForm={heroForm}
               lead={lead}
